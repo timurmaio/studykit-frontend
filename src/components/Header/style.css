@@ -1,0 +1,32 @@
+.logo {
+  font-family: SignPainter-HouseScript;
+  font-weight: 100;
+  margin-top: 0.5rem;
+}
+
+.link {
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 30px;
+  border-radius: 2px;
+}
+
+.link:hover {
+  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
+  color: #ffffff;
+}
+
+.link:focus {
+  color: #ffffff;
+}
+
+.link--active {
+  color: #ffffff;
+  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
+}
+
+.profile {
+  height: 30px;
+}
+
+.profile__link {}
