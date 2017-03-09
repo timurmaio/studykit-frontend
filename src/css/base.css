@@ -1,0 +1,18 @@
+body {
+  color: #434343;
+  font-size: 16px;
+}
+
+a {
+  color: #434343;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {}
