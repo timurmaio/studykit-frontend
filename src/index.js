@@ -1,9 +1,15 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+
+// Styles
+import './css/bootstrap-reboot.css';
+import './css/bootstrap-grid.css';
+import './css/base.css';
+import './css/shared.css';
+
+// Routes
+import routes from './routes';
 
 ReactDOM.render(
-  <App />,
+  routes,
   document.getElementById('root')
 );
