@@ -18,8 +18,24 @@
 
 /* Pushes */
 
+.push-top-10 {
+  margin-top: 10px;
+}
+
+.push-top-40 {
+  margin-top: 40px;
+}
+
 .push-left {
   margin-left: auto;
+}
+
+.push-left-10 {
+  margin-left: 10px;
+}
+
+.push-left-20 {
+  margin-left: 20px;
 }
 
 .push-left-50 {
@@ -30,8 +46,16 @@
   margin-right: 10px;
 }
 
+.push-bottom-30 {
+  margin-bottom: 30px;
+}
+
 
 /* Heights */
+
+.height-40 {
+  height: 40px;
+}
 
 .height-60 {
   height: 60px;
