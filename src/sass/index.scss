@@ -1,0 +1,29 @@
+@import "reboot";
+@import "grid";
+@import "shared";
+
+// Components
+@import "../components/Header/index";
+@import "../components/Course/index";
+@import "../components/Sidebar/index";
+
+body {
+  color: #434343;
+  font-size: 16px;
+}
+
+a {
+  color: #434343;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
