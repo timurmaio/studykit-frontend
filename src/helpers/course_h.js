@@ -1,6 +1,6 @@
 import API_URL from './config';
 
-let h = {
+const h = {
   getCourses: function() {
     return fetch(API_URL + "api/courses").then(function(response) {
       if (response.status !== 200) {

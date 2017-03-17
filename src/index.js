@@ -1,10 +1,7 @@
 import ReactDOM from 'react-dom';
 
 // Styles
-import './css/bootstrap-reboot.css';
-import './css/bootstrap-grid.css';
-import './css/base.css';
-import './css/shared.css';
+import './index.css';
 
 // Routes
 import routes from './routes';

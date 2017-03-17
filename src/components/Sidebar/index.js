@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import './style.css';
 
 class Sidebar extends Component {
   render() {
     return (
-      <div className="sidebar shadow">
+      <div className="sidebar">
         <div className="sidebar_item height-40">Все</div>
         <div className="sidebar_item height-40">Английский</div>
         <div className="sidebar_item height-40">Программирование</div>
