@@ -12,11 +12,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-sass": "react-scripts start & node-sass src/sass/index.scss src/index.css --watch",
+    "start-sass": "react-scripts start & yarn watch-sass",
     "build": "node-sass src/sass/index.scss src/index.css & react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "watch-sass": "node-sass src/sass/index.scss src/index.css --watch",
+    "watch-sass": "yarn build-sass & node-sass src/sass/index.scss src/index.css --watch",
     "build-sass": "node-sass src/sass/index.scss src/index.css"
   }
 }
