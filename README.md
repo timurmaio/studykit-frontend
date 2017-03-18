@@ -26,6 +26,12 @@ To run tests:
 yarn test
 ```
 
+To change port from default 3000 you can create an .env file with:
+
+```shell
+PORT=9000
+```
+
 **Stylesheets made with sass, so we need to compile it. We wrote some commands to work with sass:**
 
 Start the server and watch for sass changes:
