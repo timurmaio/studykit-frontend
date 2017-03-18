@@ -22,7 +22,7 @@ class Courses extends Component {
   renderCourse(course) {
     return (
       <div key={course.id} className="col-xl-4">
-        <Course name={course.title} desc={course.description} img={API_URL + course.avatar.url}/>
+        <Course name={course.title} desc={course.description} img={API_URL + "/" + course.avatar.url}/>
       </div>
     )
   }
