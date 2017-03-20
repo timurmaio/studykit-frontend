@@ -7,6 +7,8 @@ import Courses from './components/Courses';
 import Authentication from './components/Authentication';
 import MainLayout from './components/MainLayout';
 
+import NotFound from './components/NotFound';
+
 const routes = (
   <Router history={browserHistory}>
     <Route component={MainLayout}>
@@ -16,6 +18,7 @@ const routes = (
       </Route>
       <Route path="/login" component={Authentication}/>
     </Route>
+    <Route path="*" component={NotFound}/>
   </Router>
 );
 
