@@ -5,13 +5,13 @@
 In most cases this is the only command you need:
 
 ```sh
-yarn start-sass
+yarn start
 ```
 
 To start the server (without sass compiling):
 
 ```shell
-yarn start
+yarn start-js
 ```
 
 To build the project:
@@ -37,7 +37,7 @@ PORT=9000
 Start the server and watch for sass changes:
 
 ```shell
-yarn start-sass
+yarn start
 ```
 
 Just watch for sass:
