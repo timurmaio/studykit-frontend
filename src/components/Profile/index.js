@@ -48,7 +48,7 @@ class Profile extends Component {
   }
 
   renderItem = (item) => {
-    return <Link to={{ pathname: `courses/${item.id}` }} key={item.id} className="list-group-item list-group-item-action flex-column align-items-start">
+    return <Link to={{ pathname: `profile/courses/${item.id}` }} key={item.id} className="list-group-item list-group-item-action flex-column align-items-start">
       <div className="d-flex w-100 justify-content-between">
         <h5 className="mb-1">{item.title}</h5>
         <small>3 days ago</small>
