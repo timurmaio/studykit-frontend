@@ -22,9 +22,9 @@ class Header extends Component {
             <img src={logo} width="30px" alt="" />
 
             <Link to='/' activeClassName="link--active" className="link push-left-50">Курсы</Link>
+            <Link to='/news' activeClassName="link--active" className="link push-left-10">Новости</Link>
             <Link to='/calendar' activeClassName="link--active" className="link push-left-10">Календарь</Link>
             <Link to='/group' activeClassName="link--active" className="link push-left-10">Группа</Link>
-            <Link to='/news' activeClassName="link--active" className="link push-left-10">Новости</Link>
             <div className='profile push-left'>
 
               <Link to='/profile' activeClassName="profile__link--active" className="profile__link">

@@ -9,6 +9,7 @@ import NewCourse from './components/NewCourse'
 import ShowContent from './components/ShowContent'
 import Authentication from './components/Authentication'
 import MainLayout from './components/MainLayout'
+import News from './components/News'
 
 import NotFound from './components/NotFound'
 
@@ -18,6 +19,8 @@ const routes = (
       <Route component={App}>
         <Route path='/' component={Courses} />
         <Route path='/profile' component={Profile} />
+        <Route path='/profile/courses/:id' component={Course} />
+        <Route path='/news' component={News} />
         <Route path='/courses/:id' component={Course} />
         <Route path='/courses/:id/contents/new' component={NewCourse} />
         <Route path='/courses/:id/contents/:contentId' component={ShowContent} />
