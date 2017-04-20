@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 class MainLayout extends Component {
-  render() {
+  render () {
     return (
       <div>
         {this.props.children}
       </div>
-    );
+    )
   }
 }
 
-export default MainLayout;
+export default MainLayout
