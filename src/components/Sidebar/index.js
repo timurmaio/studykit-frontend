@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 class Sidebar extends Component {
-  render() {
+  render () {
     return (
       <div className="sidebar">
         <div className="sidebar_item height-40">Все</div>
@@ -15,4 +15,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default Sidebar
