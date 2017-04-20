@@ -5,20 +5,24 @@
   "dependencies": {
     "axios": "^0.15.3",
     "node-sass": "^4.5.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-markdown": "^2.5.0",
+    "react-router": "^3.0.2",
+    "standard": "^10.0.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.4"
   },
   "scripts": {
-    "start": "react-scripts start & yarn watch-sass",
+    "start": "react-scripts start",
     "start-js": "react-scripts start",
     "build": "node-sass src/sass/index.scss src/index.css & react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch-sass": "yarn build-sass & node-sass src/sass/index.scss src/index.css --watch",
-    "build-sass": "node-sass src/sass/index.scss src/index.css"
+    "build-sass": "node-sass src/sass/index.scss src/index.css",
+    "lint": "standard",
+    "fix": "standard --fix"
   }
 }
