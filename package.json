@@ -3,21 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.16.1",
     "node-sass": "^4.5.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",
     "react-router": "^3.0.2",
-    "standard": "^10.0.1"
+    "standard": "^10.0.2"
   },
   "devDependencies": {
-    "react-scripts": "0.9.4"
+    "react-scripts": "0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "start-js": "react-scripts start",
-    "build": "node-sass src/sass/index.scss src/index.css & react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch-sass": "yarn build-sass & node-sass src/sass/index.scss src/index.css --watch",
