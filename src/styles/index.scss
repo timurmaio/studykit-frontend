@@ -1,0 +1,121 @@
+@import "reboot";
+@import "grid";
+@import "shared";
+
+body {
+  color: #434343;
+  font-size: 16px;
+}
+
+a {
+  color: #434343;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+
+.authentication {
+  width: 30%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form {
+  // background-color: white;
+  padding: 10px;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+.course {
+  height: 230px;
+}
+
+.course_img {
+  width: 100%;
+  height: 115px;
+}
+
+.course_name {
+  margin-bottom: 0;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #26211B;
+  font-weight: normal;
+}
+
+.course_desc {
+  font-family: Raleway-Light;
+  font-size: 16px;
+  color: #4E4E4E;
+}
+
+.logo {
+  font-family: SignPainter-HouseScript;
+  font-weight: 100;
+  margin-top: 0.5rem;
+}
+
+.link {
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 30px;
+  border-radius: 2px;
+}
+
+.link:hover {
+  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
+  color: #ffffff;
+}
+
+.link:focus {
+  color: #ffffff;
+}
+
+.link--active {
+  color: #ffffff;
+  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
+}
+
+.profile {
+  height: 30px;
+}
+
+.sidebar {
+  height: 492px;
+}
+
+.sidebar_item {
+  background-color: #FFFFFF;
+  font-family: Raleway;
+  font-size: 16px;
+  color: #8A959B;
+  padding-left: 20px;
+  line-height: 40px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.sidebar_item:hover {
+  background-color: #F7F2F3;
+  font-family: Raleway;
+  font-size: 16px;
+  color: #424951;
+  font-weight: 500;
+}
