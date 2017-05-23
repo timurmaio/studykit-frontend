@@ -13,7 +13,7 @@ class Header extends Component {
   render () {
     const signInOut = (localStorage.jwt_token) ? <button type="button" onClick={this.handleLogout} className="push-left-10 btn btn-default btn-danger">Выйти</button>
       :
-      <Link to='/login' className="profile__link push-left-10 btn btn-default btn-danger">Войти</Link>
+      <Link to="/login" className="profile__link push-left-10 btn btn-default btn-danger">Войти</Link>
     return (
       <header className="shadow">
         <div className="container">
@@ -21,13 +21,13 @@ class Header extends Component {
             <h1 className="logo">Studykit</h1>
             <img src={logo} width="30px" alt="" />
 
-            <Link to='/' activeClassName="link--active" className="link push-left-50">Курсы</Link>
-            <Link to='/news' activeClassName="link--active" className="link push-left-10">Новости</Link>
-            <Link to='/calendar' activeClassName="link--active" className="link push-left-10">Календарь</Link>
-            <Link to='/group' activeClassName="link--active" className="link push-left-10">Группа</Link>
-            <div className='profile push-left'>
+            <Link to="/" activeClassName="link--active" className="link push-left-50">Курсы</Link>
+            <Link to="/news" activeClassName="link--active" className="link push-left-10">Новости</Link>
+            <Link to="/calendar" activeClassName="link--active" className="link push-left-10">Календарь</Link>
+            <Link to="/group" activeClassName="link--active" className="link push-left-10">Группа</Link>
+            <div className="profile push-left">
 
-              <Link to='/profile' activeClassName="profile__link--active" className="profile__link">
+              <Link to="/profile" activeClassName="profile__link--active" className="profile__link">
                 <img src={panel} width="20px" className="mr-2" alt="" />
                 Панель
               </Link>

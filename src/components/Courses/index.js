@@ -26,7 +26,7 @@ class Courses extends Component {
 
   renderCourse (course) {
     return (
-      <div key={course.id} className='col-xl-3'>
+      <div key={course.id} className="col-xl-3">
         <CourseItem id={course.id} name={course.title} desc={course.description} img={course.avatar} />
       </div>
     )
@@ -35,7 +35,7 @@ class Courses extends Component {
   render () {
     if (localStorage.getItem('jwt_token')) {
       return (
-        <div className='row'>
+        <div className="row">
           {/* <div className='col-xl-3'> */}
           {/* <Sidebar /> */}
           {/* </div> */}

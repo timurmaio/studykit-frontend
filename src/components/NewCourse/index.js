@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import { API_URL, axios } from '../../config'
 
 class NewCourse extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       type: 'MarkdownContent',
@@ -48,13 +48,13 @@ class NewCourse extends Component {
       <form>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Название</label>
-          <input type="text" name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Название лекции" onChange={this.handleInputChange}/>
+          <input type="text" name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Название лекции" onChange={this.handleInputChange} />
           <small id="emailHelp" className="form-text text-muted">Мелкий шрифт</small>
         </div>
 
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Порядковый номер</label>
-          <input type="text" name="serial" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Название лекции" onChange={this.handleInputChange}/>
+          <input type="text" name="serial" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Название лекции" onChange={this.handleInputChange} />
           <small id="emailHelp" className="form-text text-muted">Мелкий шрифт</small>
         </div>
 
