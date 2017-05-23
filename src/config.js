@@ -7,4 +7,10 @@ const axios = _axios.create({
   headers: { 'Authorization': localStorage.getItem('jwt_token') }
 })
 
-export { API_URL, axios }
+const createAxios = () => {
+  return _axios.create({
+    headers: { 'Authorization': localStorage.getItem('jwt_token') }
+  })
+}
+
+export { API_URL, axios, createAxios }
