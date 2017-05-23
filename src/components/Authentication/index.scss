@@ -1,15 +1,21 @@
 .block {
-  width: 100%;
-  height: 100vh;
-  background-color: #32383F;
+
+}
+
+.authentication {
+  width: 30%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form {
-  background-color: white;
-  // margin-top: 50%;
+  // background-color: white;
   padding: 10px;
 }
 
 .input {
   display: block;
+  width: 100%;
+  margin-bottom: .5em;
 }
