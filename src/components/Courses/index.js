@@ -40,9 +40,7 @@ class Courses extends Component {
           {/* <Sidebar /> */}
           {/* </div> */}
           {/* <div className='col-xl-12 '> */}
-          <div className='row'>
             {this.state.courses.map(this.renderCourse)}
-          </div>
           {/* </div> */}
         </div>
       )
