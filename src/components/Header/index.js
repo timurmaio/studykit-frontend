@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
 
-import logo from './logo.jpg'
-
 import panel from './panel-donut.svg'
 
 class Header extends Component {
@@ -19,20 +17,20 @@ class Header extends Component {
         <div className="container">
           <div className="flex flex--vcenter height-60">
             <h1 className="logo">Studykit</h1>
-            <img src={logo} width="30px" alt="" />
 
             <Link to="/" activeClassName="link--active" className="link push-left-50">Курсы</Link>
             <Link to="/news" activeClassName="link--active" className="link push-left-10">Новости</Link>
             <Link to="/calendar" activeClassName="link--active" className="link push-left-10">Календарь</Link>
             <Link to="/group" activeClassName="link--active" className="link push-left-10">Группа</Link>
-            <div className="profile push-left">
 
+            <div className="profile push-left">
               <Link to="/profile" activeClassName="profile__link--active" className="profile__link">
                 <img src={panel} width="20px" className="mr-2" alt="" />
                 Панель
               </Link>
               {signInOut}
             </div>
+            
           </div>
         </div>
       </header>
