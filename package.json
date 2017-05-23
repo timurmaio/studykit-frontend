@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
-    "node-sass": "^4.5.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",
     "react-router": "^3.0.2"
   },
   "devDependencies": {
+    "node-sass-chokidar": "^0.0.1",
     "react-scripts": "1.0.5"
   },
   "scripts": {
@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "watch-sass": "yarn build-sass & node-sass src/sass/index.scss src/index.css --watch",
-    "build-sass": "node-sass src/sass/index.scss src/index.css"
+    "build-css": "node-sass-chokidar src/styles/index.scss src/index.css",
+    "watch-css": "yarn build-css & node-sass-chokidar src/styles/index.scss src/index.css --watch"
   }
 }
