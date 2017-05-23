@@ -8,21 +8,17 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",
-    "react-router": "^3.0.2",
-    "standard": "^10.0.2"
+    "react-router": "^3.0.2"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-js": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch-sass": "yarn build-sass & node-sass src/sass/index.scss src/index.css --watch",
-    "build-sass": "node-sass src/sass/index.scss src/index.css",
-    "lint": "standard",
-    "fix": "standard --fix"
+    "build-sass": "node-sass src/sass/index.scss src/index.css"
   }
 }
