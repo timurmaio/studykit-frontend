@@ -85,7 +85,7 @@ class Authentication extends Component {
     return (
       <div className="authentication">
         <h1>Вход в систему</h1>
-        <form onSubmit={this.handleSubmit} className="form shadow">
+        <form id="auth-form" onSubmit={this.handleSubmit} className="form shadow">
 
           <div>
             <label htmlFor="email">Электронная почта:</label>
@@ -99,10 +99,10 @@ class Authentication extends Component {
             <input id="password" name="password" className="input" type="password" onChange={this.handleChange} placeholder="Пароль" />
           </div>
 
-          <input type="submit" value={authButtonText} />
+          <input id="auth-submit" type="submit" value={authButtonText} />
 
           <div>
-            <button onClick={this.changeFormType}>{changeAuthButtonText}</button>
+            <button id="auth-change" onClick={this.changeFormType}>{changeAuthButtonText}</button>
           </div>
 
           <div>
