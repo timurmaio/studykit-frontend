@@ -1,0 +1,16 @@
+.auth-form {
+  padding: 32px;
+  &_head {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 24px;
+    color: $primary-black;
+    text-align: center;
+  }
+  &_label {
+    font-family: Roboto;
+    font-weight: 200;
+    font-size: 16px;
+    color: $primary-black;
+  }
+}
