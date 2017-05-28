@@ -18,10 +18,8 @@ class Header extends Component {
           <div className="flex flex--vcenter height-60">
             <h1 className="logo">Studykit</h1>
 
-            <Link to="/" activeClassName="link--active" className="link push-left-50">Курсы</Link>
-            <Link to="/news" activeClassName="link--active" className="link push-left-10">Новости</Link>
-            <Link to="/calendar" activeClassName="link--active" className="link push-left-10">Календарь</Link>
-            <Link to="/group" activeClassName="link--active" className="link push-left-10">Группа</Link>
+            <Link to="/me" activeClassName="link--active" className="link push-left-50">Обучение</Link>
+            <Link to="/" activeClassName="link--active" className="link">Все курсы</Link>
 
             <div className="profile push-left">
               <Link to="/profile" activeClassName="profile__link--active" className="profile__link">
@@ -30,7 +28,7 @@ class Header extends Component {
               </Link>
               {signInOut}
             </div>
-            
+
           </div>
         </div>
       </header>
