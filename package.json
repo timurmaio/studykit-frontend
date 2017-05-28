@@ -7,18 +7,18 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",
-    "react-router": "^3.0.2"
+    "react-router": "3.0.5"
   },
   "devDependencies": {
-    "node-sass-chokidar": "^0.0.1",
-    "react-scripts": "1.0.5"
+    "node-sass": "^4.5.3",
+    "react-scripts": "^1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar src/styles/index.scss src/index.css",
-    "watch-css": "yarn build-css & node-sass-chokidar src/styles/index.scss src/index.css --watch"
+    "build-css": "node-sass src/styles/index.scss src/index.css",
+    "watch-css": "yarn build-css && node-sass src/styles/index.scss src/index.css --watch"
   }
 }
