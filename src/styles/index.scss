@@ -9,62 +9,16 @@
 @import "layout";
 
 // Components
-@import "buttons";
-@import "course";
-@import "inputs";
-@import "forms";
+@import "components/links";
+@import "components/buttons";
+@import "components/course";
+@import "components/inputs";
+@import "components/forms";
 
 .logo {
-  font-family: SignPainter-HouseScript;
+  font-family: KaushanScript-Regular;
+  font-size: 32px;
+  color: #343A40;
   font-weight: 100;
   margin-top: 0.5rem;
-}
-
-.link {
-  padding-left: 10px;
-  padding-right: 10px;
-  line-height: 30px;
-  border-radius: 2px;
-}
-
-.link:hover {
-  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
-  color: #ffffff;
-}
-
-.link:focus {
-  color: #ffffff;
-}
-
-.link--active {
-  color: #ffffff;
-  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
-}
-
-.profile {
-  height: 30px;
-}
-
-.sidebar {
-  height: 492px;
-}
-
-.sidebar_item {
-  background-color: #FFFFFF;
-  font-family: Raleway;
-  font-size: 16px;
-  color: #8A959B;
-  padding-left: 20px;
-  line-height: 40px;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-.sidebar_item:hover {
-  background-color: #F7F2F3;
-  font-family: Raleway;
-  font-size: 16px;
-  color: #424951;
-  font-weight: 500;
 }

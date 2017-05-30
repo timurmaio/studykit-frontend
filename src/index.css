@@ -1027,6 +1027,9 @@ html {
 .shadow {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
 
+.bg-white {
+  background-color: #fff; }
+
 /* Flex */
 .flex {
   display: flex; }
@@ -1052,6 +1055,9 @@ html {
 
 .push-left-50 {
   margin-left: 50px; }
+
+.push-right {
+  margin-right: auto; }
 
 .push-right-10 {
   margin-right: 10px; }
@@ -1085,12 +1091,16 @@ html {
 .mt-40 {
   margin-top: 40px; }
 
+.ml-4 {
+  margin-left: 4px; }
+
 .mr-20 {
   margin-right: 20px; }
 
 body {
   color: #434343;
-  font-size: 16px; }
+  font-size: 16px;
+  background-color: #F1F1F1; }
 
 a {
   color: #434343; }
@@ -1098,11 +1108,27 @@ a {
 a:focus, a:hover {
   text-decoration: none; }
 
-h1 {
-  font-size: 2.5rem; }
-
 h5 {
   font-size: 1.25rem; }
+
+.link {
+  padding: 8px 16px;
+  line-height: 30px;
+  border-radius: 4px;
+  font-weight: 700; }
+  .link--active {
+    color: #fff;
+    background-image: linear-gradient(-198deg, #FC6076 0%, #FF9944 100%); }
+  .link:hover {
+    background-image: linear-gradient(-198deg, #FC6076 0%, #FF9944 100%);
+    color: #fff; }
+  .link:focus {
+    color: #ffffff; }
+  .link--profile:hover {
+    background-image: none;
+    color: #3d3d3d; }
+  .link--profile:focus {
+    color: #3d3d3d; }
 
 .button {
   font-family: Roboto;
@@ -1129,7 +1155,8 @@ h5 {
 .course {
   height: 240px;
   border-radius: 4px;
-  cursor: pointer; }
+  cursor: pointer;
+  background-color: #fff; }
   .course:hover {
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.26), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
     transition: box-shadow 0.4s ease-in-out; }
@@ -1174,7 +1201,8 @@ h5 {
     border: 1px solid #ff9a44; }
 
 .auth-form {
-  padding: 32px; }
+  padding: 32px;
+  background-color: white; }
   .auth-form_head {
     font-family: Roboto;
     font-weight: 700;
@@ -1188,47 +1216,8 @@ h5 {
     color: #3d3d3d; }
 
 .logo {
-  font-family: SignPainter-HouseScript;
+  font-family: KaushanScript-Regular;
+  font-size: 32px;
+  color: #343A40;
   font-weight: 100;
   margin-top: 0.5rem; }
-
-.link {
-  padding-left: 10px;
-  padding-right: 10px;
-  line-height: 30px;
-  border-radius: 2px; }
-
-.link:hover {
-  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%);
-  color: #ffffff; }
-
-.link:focus {
-  color: #ffffff; }
-
-.link--active {
-  color: #ffffff;
-  background-image: linear-gradient(-198deg, #FF9944 0%, #FC6076 100%); }
-
-.profile {
-  height: 30px; }
-
-.sidebar {
-  height: 492px; }
-
-.sidebar_item {
-  background-color: #FFFFFF;
-  font-family: Raleway;
-  font-size: 16px;
-  color: #8A959B;
-  padding-left: 20px;
-  line-height: 40px;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 2px; }
-
-.sidebar_item:hover {
-  background-color: #F7F2F3;
-  font-family: Raleway;
-  font-size: 16px;
-  color: #424951;
-  font-weight: 500; }
