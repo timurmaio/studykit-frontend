@@ -40,10 +40,10 @@ class Course extends Component {
     const style = {
       marginTop: '-20px'
     }
-    const button = this.props.route.path === "/profile/courses/:id" ? 
-    <Link to={{ pathname: `/courses/${this.state.courseId}/contents/new` }} className="btn btn-primary mt-3">Добавить лекцию</Link> 
-    :
-    undefined
+    const button = this.props.route.path === "/profile/courses/:id" ?
+      <Link to={{ pathname: `/courses/${this.state.courseId}/contents/new` }} className="btn btn-primary mt-3">Добавить лекцию</Link>
+      :
+      undefined
 
     return (
       <div style={style}>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { API_URL, axios } from '../../config'
 import { browserHistory } from 'react-router'
 
@@ -16,7 +16,7 @@ class Courses extends Component {
   componentDidMount () {
     axios.get(API_URL + '/api/courses').then((response) => {
       console.log(response)
-      this.setState({courses: response.data})
+      this.setState({ courses: response.data })
     })
   }
 

@@ -6,9 +6,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        {/*<div className="container push-top-40">*/}
-          {this.props.children}
-        {/*</div>*/}
+        {this.props.children}
       </div>
     )
   }

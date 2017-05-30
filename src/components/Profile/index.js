@@ -59,11 +59,8 @@ class Profile extends Component {
   }
 
   render () {
-    const style = {
-      marginTop: '-20px'
-    }
     return (
-      <div style={style}>
+      <div className="container">
 
         <div className="row">
           <div className="col-2">
