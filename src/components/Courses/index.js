@@ -26,7 +26,7 @@ class Courses extends Component {
 
   renderCourse (course) {
     return (
-      <div key={course.id} className="col-xl-3">
+      <div key={course.id} className="col-3">
         <CourseItem id={course.id} name={course.title} desc={course.description} img={course.avatar} />
       </div>
     )
