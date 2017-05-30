@@ -17,14 +17,14 @@ class Header extends Component {
         <div className="container">
           <div className="flex flex--vcenter height-60">
 
-            <nav style={{ width: '20%' }} className="push-right">
+            <nav style={{ width: '260px' }} className="push-right">
               <Link to="/education" activeClassName="link link--active" className="link">Обучение</Link>
               <Link to="/" activeClassName="link link--active" className="link ml-4">Все курсы</Link>
             </nav>
 
             <h1 className="logo mx-auto">StudyKit</h1>
 
-            <div style={{ width: '20%' }} className="push-left">
+            <div style={{ width: '260px' }} className="push-left">
               <Link to="/profile" className="link link--profile">
                 <img src={person} width="12px" className="mr-2" alt="" />
                 <span className="ml-4">Профиль</span>
