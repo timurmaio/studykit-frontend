@@ -138,21 +138,15 @@ class Authentication extends Component {
 
               {this.state.signUp ? this.renderSignUpForm() : null}
 
-              {/*<div>*/}
               <label className="auth-form_label" htmlFor="email">Электронная почта:</label>
-              <input id="email" name="email" className="input mb-20" type="text" onChange={this.handleChange} placeholder="example@mail.com" />
-              {/*</div>*/}
+              <input id="email" name="email" className="input mb-20" type="text" onChange={this.handleChange} placeholder="example@mail.com" required />
 
-              {/*<div>*/}
               <label className="auth-form_label" htmlFor="password">Пароль:</label>
-              <input id="password" name="password" className="input mb-20" type="password" onChange={this.handleChange} placeholder="******" />
-              {/*</div>*/}
+              <input id="password" name="password" className="input mb-20" type="password" onChange={this.handleChange} placeholder="******" required />
 
               <input className="button mr-20" id="auth-submit" type="submit" value={authButtonText} />
 
-              {/*<div>*/}
               <button className="button button--auth-change" id="auth-change" onClick={this.changeFormType}>{changeAuthButtonText}</button>
-              {/*</div>*/}
 
               <div className="alert">{this.state.error}</div>
             </form>
