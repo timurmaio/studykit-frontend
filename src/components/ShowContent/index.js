@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { API_URL, axios } from '../../config'
+import { API_URL, createAxios } from '../../config'
 import ReactMarkdown from 'react-markdown'
+
+const axios = createAxios()
 
 class ShowContent extends Component {
   constructor (props) {

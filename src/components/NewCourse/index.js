@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
-import { API_URL, axios } from '../../config'
+import { API_URL, createAxios } from '../../config'
+
+const axios = createAxios()
 
 class NewCourse extends Component {
   constructor (props) {
