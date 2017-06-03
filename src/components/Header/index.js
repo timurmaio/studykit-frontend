@@ -4,16 +4,17 @@ import { Link, browserHistory } from 'react-router'
 import person from './person.svg'
 
 class Header extends Component {
-  handleLogout = () => {
+  handleSignOut = () => {
     localStorage.removeItem('jwt_token')
     browserHistory.push('/login')
   }
   render () {
-    const signInOut = (localStorage.jwt_token) ? <button type="button" onClick={this.handleLogout} className="push-left-10 btn btn-default btn-danger">Выйти</button>
+    const signInOut = (localStorage.jwt_token) ? <button type="button" onClick={this.handleSignOut} className="push-left-10 btn btn-default btn-danger">Выйти</button>
       :
       <Link to="/signin" className="profile__link push-left-10 btn btn-default btn-danger">Войти</Link>
 
-    const signed = localStorage  
+    const signed = localStorage.getItem('jwt_token')
+    
     return (
       <header className="shadow bg-white">
         <div className="container">
