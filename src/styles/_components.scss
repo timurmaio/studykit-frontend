@@ -1,0 +1,155 @@
+.button {
+  font-family: Roboto;
+  display: inline-block;
+  font-weight: 700;
+  color: #fff;
+  background-color: $primary-pink;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0 20px;
+  font-size: 16px;
+  height: 32px;
+  border-radius: 4px;
+  // transition: all 0.2s ease-in-out;
+  &--auth-change {
+    background-color: #fff;
+    color: $primary-black;
+    font-weight: 200;
+    line-height: 32px;
+    padding: 0;
+  }
+}
+
+.course {
+  height: 240px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+
+  &:hover {
+    box-shadow: 0 6px 6px 0 rgba(0,0,0,0.26), 0 10px 20px 0 rgba(0,0,0,0.19);
+    transition: box-shadow 0.4s ease-in-out;
+  }
+}
+
+.course_img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.course_name {
+  margin-bottom: 0;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #26211B;
+  font-weight: normal;
+}
+
+.course_desc {
+  font-family: Raleway-Light;
+  font-size: 16px;
+  color: #4E4E4E;
+}
+
+.auth-form {
+  padding: 32px;
+  background-color: white;
+  &_head {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 24px;
+    color: $primary-black;
+    text-align: center;
+  }
+  &_label {
+    font-family: Roboto;
+    font-weight: 200;
+    font-size: 16px;
+    color: $primary-black;
+  }
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 200;
+  color: $primary-black;
+  height: 40px;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid $primary-gray;
+  border-radius: 4px;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  &:hover {
+    border: 1px solid $primary-orange;
+  }
+  &:active {
+    border: 1px solid $primary-orange;
+  }
+}
+
+.link {
+  padding: 8px 16px;
+  line-height: 30px;
+  border-radius: 4px;
+  font-weight: 700;
+
+  &--active {
+    color: #fff;
+    background-image: linear-gradient(-198deg, #FC6076 0%, #FF9944 100%);
+  }
+
+  &:hover {
+    background-image: linear-gradient(-198deg, #FC6076 0%, #FF9944 100%);
+    color: #fff;
+  }
+
+  &:focus {
+    color: #ffffff;
+  }
+
+  &--profile{
+  
+    &:hover {
+      background-image: none;
+      color: $primary-black;
+    }
+
+    &:focus {
+      color: $primary-black;
+    }
+
+  }
+}
+
+.panel {
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.course-img {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  object-fit: cover;
+}
+
+
+.logo {
+  font-family: KaushanScript-Regular;
+  font-size: 32px;
+  color: #343A40;
+  font-weight: 100;
+  margin-top: 0.5rem;
+}

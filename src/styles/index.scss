@@ -1,24 +1,7 @@
-// Base
-@import "variables";
 @import "reboot";
-@import "grid";
-@import "shared";
 @import "base";
-
-// Utilities
+@import "utilities";
+@import "grid";
 @import "layout";
-
-// Components
-@import "components/links";
-@import "components/buttons";
-@import "components/course";
-@import "components/inputs";
-@import "components/forms";
-
-.logo {
-  font-family: KaushanScript-Regular;
-  font-size: 32px;
-  color: #343A40;
-  font-weight: 100;
-  margin-top: 0.5rem;
-}
+@import "sizes";
+@import "components";
