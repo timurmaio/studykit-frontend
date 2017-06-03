@@ -11,15 +11,17 @@ class Header extends Component {
   render () {
     const signInOut = (localStorage.jwt_token) ? <button type="button" onClick={this.handleLogout} className="push-left-10 btn btn-default btn-danger">Выйти</button>
       :
-      <Link to="/login" className="profile__link push-left-10 btn btn-default btn-danger">Войти</Link>
+      <Link to="/signin" className="profile__link push-left-10 btn btn-default btn-danger">Войти</Link>
+
+    const signed = localStorage  
     return (
       <header className="shadow bg-white">
         <div className="container">
           <div className="flex flex--vcenter height-60">
 
             <nav style={{ width: '260px' }} className="push-right">
-              <Link to="/education" activeClassName="link link--active" className="link">Обучение</Link>
-              <Link to="/" activeClassName="link link--active" className="link ml-4">Все курсы</Link>
+              <Link to="/learning" activeClassName="link link--active" className="link">Обучение</Link>
+              <Link to="/courses" activeClassName="link link--active" className="link ml-4">Все курсы</Link>
             </nav>
 
             <h1 className="logo mx-auto">StudyKit</h1>
