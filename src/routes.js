@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, Redirect, browserHistory } from 'react-router'
 
 // Containers
 import App from './containers/App'
@@ -18,7 +18,7 @@ import NotFound from './components/NotFound'
 const routes = (
   <Router history={browserHistory}>
     <Route component={App}>
-      {/*<Route path="/" component={Courses} />*/}
+      <Redirect from="/" to="/courses" />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/profile" component={Profile} />
@@ -30,7 +30,6 @@ const routes = (
 
       <Route path="*" component={NotFound} />
 
-      {/*<Route path="/profile/courses/:id" component={Course} />*/}
       <Route path="/courses/:id/contents/new" component={NewCourse} />
       <Route path="/courses/:id/contents/:contentId" component={ShowContent} />
     </Route>
