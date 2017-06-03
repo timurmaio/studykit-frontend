@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { API_URL, axios } from '../../config'
+import { API_URL, createAxios } from '../../config'
+
+const axios = createAxios()
 
 class Course extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      id: '',
       title: '',
       description: '',
-      courseId: '',
       content: [],
       course: {},
-      owner: {}
+      owner: {},
+      alert: '',
+      createdAt: ''
     }
   }
 
   componentDidMount () {
     axios.get(API_URL + '/api/courses/' + this.props.params.id).then((response) => {
-      this.setState({ title: response.data.title, description: response.data.description, courseId: response.data.id, content: response.data.content, course: response.data, owner: response.data.owner })
       console.log(response.data)
+      this.setState({ title: response.data.title, description: response.data.description, id: response.data.id, content: response.data.lectures, course: response.data, owner: response.data.owner, createdAt: response.data.createdAt })
     })
   }
 
@@ -36,34 +40,39 @@ class Course extends Component {
     )
   }
 
+  joinCourse = () => {
+    axios.post(`${API_URL}/api/courses/${this.state.id}/join`).then((response) => {
+      this.setState({ alert: response.data.data })
+      console.log(response.data)
+    })
+  }
+
   render () {
-    const style = {
-      marginTop: '-20px'
-    }
-    const button = this.props.route.path === "/profile/courses/:id" ?
-      <Link to={{ pathname: `/courses/${this.state.courseId}/contents/new` }} className="btn btn-primary mt-3">Добавить лекцию</Link>
-      :
-      undefined
-
     return (
-      <div style={style}>
-
+      <div className="container mt-40">
         <div className="row">
-          <div className="col-md-3">
-            <h1>{this.state.title}</h1>
-            <img src={this.state.course.avatar} alt="Изображние курса" width="150px" />
-            <p>{this.state.description}</p>
-            <b>Владелец:</b>
-            <p>{this.state.owner.first_name} {this.state.owner.last_name}</p>
-            {button}
+          <div className="col-4">
+            <div className="panel h-600">
+              <img src={this.state.course.avatar} className="course-img" alt="Изображние курса" width="350px" height="200px"/>
+              <button className="button ml-32 mt-24" onClick={this.joinCourse}>Подписаться</button>
+              <p>{this.state.alert}</p>
+              <p className="mt-16 mb-0 mx-32 fs-20">{this.state.description}</p>
+              <p className="mt-16 mb-0 ml-32">Автор: {this.state.owner.firstName} {this.state.owner.lastName}</p>
+              <p className="mt-8 mb-0 ml-32">Дата создания: {this.state.createdAt}</p>
+              <p className="mt-8 mb-0 ml-32">Теги: #programming #database</p>
+            </div>
           </div>
-          <div className="col-md-9">
-            <div className="row">
-              {this.state.content.map(this.renderItem)}
+          <div className="col-8">
+            <div className="panel h-600">
+              <header className="ml-32 mt-24 fs-24">{this.state.title}</header>
+              {this.state.content.map((lecture) => {
+                return (
+                  <span>{lecture.title}</span>
+                )
+              })}
             </div>
           </div>
         </div>
-
       </div>
     )
   }
