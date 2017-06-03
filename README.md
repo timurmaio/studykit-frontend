@@ -4,7 +4,6 @@
 
 To build an app:
 ```javascript
-yarn build-css
 yarn build
 ```
 
