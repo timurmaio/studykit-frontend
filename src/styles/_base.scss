@@ -3,15 +3,16 @@ $primary-black: #3d3d3d;
 $primary-orange: #ff9a44;
 $primary-pink: #fc6076;
 $primary-gray: #ced4dA;
+$bg: #f1f1f1;
 
 body {
   font-size: 16px;
-  color: #343A40;
-  background-color: #f1f1f1;
+  color: $primary-black;
+  background-color: $bg;
 }
 
 a {
-  color: #434343;
+  color: $primary-black;
 }
 
 a:focus, a:hover {

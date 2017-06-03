@@ -377,11 +377,11 @@ output {
 /*# sourceMappingURL=bootstrap-reboot.css.map */
 body {
   font-size: 16px;
-  color: #343A40;
+  color: #3d3d3d;
   background-color: #f1f1f1; }
 
 a {
-  color: #434343; }
+  color: #3d3d3d; }
 
 a:focus, a:hover {
   text-decoration: none; }
