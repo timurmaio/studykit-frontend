@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
-
 import person from './person.svg'
 
 class Header extends Component {
@@ -35,6 +34,11 @@ class Header extends Component {
       :
       null
 
+    const userName = localStorage.getItem('jwt_token') ?
+    <span style={{ lineHeight: '32px', marginRight: '16px' }}>{this.props.firstName} {this.props.lastName}</span>
+    :
+    null
+
     return (
       <header className="top-panel mb-20">
         <div className="container">
@@ -48,10 +52,10 @@ class Header extends Component {
             <span className="top-panel_logo">StudyKit</span>
 
             <div className="top-panel_profile">
-              {linkToProfile}
+              {/*{linkToProfile}*/}
+              {userName}
               {signButton}
             </div>
-
           </div>
         </div>
       </header>
