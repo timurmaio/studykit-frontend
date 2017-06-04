@@ -1,3 +1,87 @@
+.top-panel {
+  min-width: 960px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.20), 0 1px 3px 0 rgba(0, 0, 0, 0.10);
+
+  &_content {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+
+  &_nav {
+    display: flex;
+    width: 33.333333%;
+  }
+
+  &_logo {
+    font-family: KaushanScript-Regular;
+    font-size: 36px;
+    color: $primary-black;
+    margin-left: auto;
+    margin-right: auto;
+    // margin-top: 0.5rem;
+  }
+
+  &_profile {
+    display: flex;
+    width: 33.333333%;
+    justify-content: flex-end
+  }
+}
+
+.nav-link {
+  display: block;
+  padding: 4px 16px;
+  border-radius: 4px;
+  color: $primary-black;
+
+  &--active {
+    color: #fff;
+    background-color: #fff;
+    background-image: linear-gradient(-198deg, #fc6076 0%, #ff9944 100%);
+
+    &:focus {
+      color: #fff;
+    }
+  }
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background-image: linear-gradient(-198deg, #fc6076 0%, #ff9944 100%);
+  }
+
+  &:focus{
+    text-decoration: none;
+  }
+
+}
+
+.link {
+  color: $primary-black;
+  // padding: 4px 16px;
+
+  &:hover, &:focus {
+    text-decoration: none;
+    // color: #226fcb;
+  }
+
+  &--black {
+    
+    &:hover, &:focus {
+      text-decoration: none;
+      color: $primary-black;
+    }
+
+  }
+
+  &--profile {
+    padding: 4px 16px;
+  }
+
+}
+
 .button {
   font-family: Roboto;
   display: inline-block;
@@ -24,38 +108,46 @@
   }
 }
 
-.course {
+.card {
   height: 240px;
   border-radius: 4px;
   cursor: pointer;
   background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.20), 0 1px 3px 0 rgba(0, 0, 0, 0.10);
 
   &:hover {
     box-shadow: 0 6px 6px 0 rgba(0,0,0,0.26), 0 10px 20px 0 rgba(0,0,0,0.19);
     transition: box-shadow 0.4s ease-in-out;
   }
-}
 
-.course_img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
+  &_image {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 8px;
+  }
 
-.course_name {
-  margin-bottom: 0;
-  font-family: Roboto-Regular;
-  font-size: 20px;
-  color: #26211B;
-  font-weight: normal;
-}
+  &_body {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 
-.course_desc {
-  font-family: Raleway-Light;
-  font-size: 16px;
-  color: #4E4E4E;
+  &_title {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    color: #26211b;
+    margin-bottom: 4px;
+  }
+
+  &_description {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 200;
+    color: #4e4e4e;
+  }
 }
 
 .auth-form {
@@ -99,39 +191,7 @@
   }
 }
 
-.link {
-  padding: 8px 16px;
-  line-height: 30px;
-  border-radius: 4px;
-  font-weight: 700;
 
-  &--active {
-    color: #fff;
-    background-image: linear-gradient(-198deg, #FC6076 0%, #FF9944 100%);
-  }
-
-  &:hover {
-    background-image: linear-gradient(-198deg, #FC6076 0%, #FF9944 100%);
-    color: #fff;
-  }
-
-  &:focus {
-    color: #ffffff;
-  }
-
-  &--profile{
-  
-    &:hover {
-      background-image: none;
-      color: $primary-black;
-    }
-
-    &:focus {
-      color: $primary-black;
-    }
-
-  }
-}
 
 .panel {
   background-color: #fff;
@@ -145,11 +205,76 @@
   object-fit: cover;
 }
 
+.hr {
+  border: 0;
+  border-bottom: 1px solid $light-gray;
+}
 
-.logo {
-  font-family: KaushanScript-Regular;
-  font-size: 32px;
-  color: #343A40;
-  font-weight: 100;
-  margin-top: 0.5rem;
+.circle {
+  display: inline-flex;
+  height: 12px;
+  width: 12px;
+  border: 1px solid $primary-black;
+  border-radius: 50%;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #464a4c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+}
+
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.form-control:focus {
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #5cb3fd;
+  outline: none;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #636c72;
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+  color: #636c72;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #636c72;
+  opacity: 1;
+}
+
+.form-control::placeholder {
+  color: #636c72;
+  opacity: 1;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #eceeef;
+  opacity: 1;
+}
+
+.form-control:disabled {
+  cursor: not-allowed;
 }
