@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { API_URL, createAxios } from '../../config'
 
-const axios = createAxios()
 
 class NewCourse extends Component {
   constructor (props) {
@@ -17,6 +16,9 @@ class NewCourse extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
+    const axios = createAxios()
+    
     const courseId = this.props.params.id
 
     const url = API_URL + '/api/courses/' + courseId + '/content'
