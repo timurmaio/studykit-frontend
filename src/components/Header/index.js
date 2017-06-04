@@ -6,33 +6,50 @@ import person from './person.svg'
 class Header extends Component {
   handleSignOut = () => {
     localStorage.removeItem('jwt_token')
-    browserHistory.push('/login')
+    localStorage.removeItem('user_id')
+    browserHistory.push('/signin')
   }
+
+  handleSignIn = () => {
+    browserHistory.push('/signin')
+  }
+
   render () {
-    const signInOut = (localStorage.jwt_token) ? <button type="button" onClick={this.handleSignOut} className="push-left-10 btn btn-default btn-danger">Выйти</button>
-      :
-      <Link to="/signin" className="profile__link push-left-10 btn btn-default btn-danger">Войти</Link>
-
     const signed = localStorage.getItem('jwt_token')
-    
-    return (
-      <header className="shadow bg-white">
-        <div className="container">
-          <div className="flex flex--vcenter height-60">
 
-            <nav style={{ width: '260px' }} className="push-right">
-              <Link to="/learning" activeClassName="link link--active" className="link">Обучение</Link>
-              <Link to="/courses" activeClassName="link link--active" className="link ml-4">Все курсы</Link>
+    const signButton = signed ? 
+      <button type="button" onClick={this.handleSignOut} className="button">Выйти</button>
+      :
+      <button type="button" onClick={this.handleSignIn} className="button">Войти</button>
+
+    const linkToProfile = signed ? 
+      <Link to="/profile" className="link link--profile flex align-items-center">
+        <img src={person} width="12px" className="mr-4" alt="" />
+        <span className="mr-4">Профиль</span>
+      </Link>
+      :
+      null
+
+    const linkToLearning = signed ?
+      <Link to="/learning" activeClassName="nav-link nav-link--active" className="nav-link mr-4">Обучение</Link>
+      :
+      null
+
+    return (
+      <header className="top-panel mb-20">
+        <div className="container">
+          <div className="top-panel_content">
+
+            <nav className="top-panel_nav">
+              {linkToLearning}
+              <Link to="/courses" activeClassName="nav-link nav-link--active" className="nav-link">Все курсы</Link>
             </nav>
 
-            <h1 className="logo mx-auto">StudyKit</h1>
+            <span className="top-panel_logo">StudyKit</span>
 
-            <div style={{ width: '260px' }} className="push-left">
-              <Link to="/profile" className="link link--profile">
-                <img src={person} width="12px" className="mr-2" alt="" />
-                <span className="ml-4">Профиль</span>
-              </Link>
-              {signInOut}
+            <div className="top-panel_profile">
+              {linkToProfile}
+              {signButton}
             </div>
 
           </div>
