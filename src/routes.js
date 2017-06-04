@@ -22,16 +22,17 @@ const routes = (
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/profile" component={Profile} />
+
       <Route path="/courses" component={Courses} />
+      <Route path="/courses/:id" component={Course} />
+      <Route path="/courses/:id/lectures/:lectureId/contents/:contentId" component={ShowContent} />
+
       <Route path="/learning" component={Learning} />
       <Route path="/teaching" component={Profile} />
 
-      <Route path="/courses/:id" component={Course} />
-
       <Route path="*" component={NotFound} />
 
-      <Route path="/courses/:id/contents/new" component={NewCourse} />
-      <Route path="/courses/:id/contents/:contentId" component={ShowContent} />
+      {/*<Route path="/courses/:id/contents/new" component={NewCourse} />*/}
     </Route>
   </Router>
 )
