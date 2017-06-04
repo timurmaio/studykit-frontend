@@ -4,8 +4,6 @@ import axios from 'axios'
 import SignUpForm from '../../components/SignUpForm'
 import { API_URL } from '../../config'
 
-const url = `${API_URL}/api/users`
-
 class SignUp extends Component {
   constructor (props) {
     super(props)
@@ -29,6 +27,8 @@ class SignUp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
+    const url = `${API_URL}/api/users`
 
     const signUpData = {
       user: {

@@ -4,8 +4,6 @@ import axios from 'axios'
 import SignInForm from '../../components/SignInForm'
 import { API_URL } from '../../config'
 
-const url = `${API_URL}/api/users/login`
-
 class SignIn extends Component {
   constructor (props) {
     super(props)
@@ -28,6 +26,8 @@ class SignIn extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
+    const url = `${API_URL}/api/users/login`
+    
     const signInData = {
       user: {
         email: this.state.email,
