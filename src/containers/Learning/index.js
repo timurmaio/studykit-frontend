@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { API_URL, createAxios } from '../../config'
 import CourseCard from '../../components/CourseCard'
 
-const axios = createAxios()
-const userId = localStorage.getItem('user_id')
-
 class Learning extends Component {
   constructor (props) {
     super(props)
@@ -14,6 +11,9 @@ class Learning extends Component {
   }
 
   componentDidMount () {
+    const axios = createAxios()
+    const userId = localStorage.getItem('user_id')
+    
     axios.get(`${API_URL}/api/courses?participated_by=${userId}`).then((response) => {
       this.setState({ courses: response.data })
     })
@@ -29,7 +29,7 @@ class Learning extends Component {
 
   render () {
     return (
-      <div className="container mt-20">
+      <div className="container">
         <div className="row">
           {this.state.courses.map(this.renderCourseCard)}
         </div>
