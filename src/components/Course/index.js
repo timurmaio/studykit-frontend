@@ -5,21 +5,6 @@ import lection from './lection.svg'
 import test from './test.svg'
 import video from './video.svg'
 
-const axios = createAxios()
-
-const sortContent = (arr) => {
-  let sortedArr = arr.map((item) => {
-    item.content.sort((a, b) => {
-      if (a.serial_number > b.serial_number) return 1;
-      if (a.serial_number < b.serial_number) return -1;
-      return 0;
-    })
-    return item
-  })
-
-  return sortedArr
-}
-
 class Course extends Component {
   constructor (props) {
     super(props)
@@ -30,16 +15,33 @@ class Course extends Component {
       content: [],
       course: {},
       owner: {},
-      alert: '',
-      createdAt: ''
+      createdAt: '',
+      participating: false,
+      statistics: '',
+      alert: ''
     }
   }
 
   componentDidMount () {
+    const axios = createAxios()
+    const userId = localStorage.getItem('user_id')
+
     axios.get(API_URL + '/api/courses/' + this.props.params.id).then((response) => {
       console.log(response.data)
-      const content = sortContent(response.data.lectures)
-      this.setState({ title: response.data.title, description: response.data.description, id: response.data.id, content: content, course: response.data, owner: response.data.owner, createdAt: response.data.createdAt })
+      this.setState({ title: response.data.title, description: response.data.description, id: response.data.id, content: response.data.lectures, course: response.data, owner: response.data.owner, createdAt: response.data.createdAt })
+    })
+
+    axios.get(`${API_URL}/api/courses/${this.props.params.id}/participating `).then((response) => {
+      this.setState({ participating: response.data.participating })
+      console.log(response.data)
+    })
+
+    axios.get(`${API_URL}/api/courses/${this.props.params.id}/participants/${userId}/statistics`).then((response) => {
+      const courseStatistics = Math.round(response.data.data.solved_problems / response.data.data.problems * 100)
+      // console.log(courseStatistics)
+
+      this.setState({ statistics: courseStatistics })
+      console.log(response.data)
     })
   }
 
@@ -58,25 +60,61 @@ class Course extends Component {
   }
 
   joinCourse = () => {
-    axios.post(`${API_URL}/api/courses/${this.state.id}/join`).then((response) => {
-      this.setState({ alert: response.data.data })
+    const axios = createAxios()
+
+    axios.post(`${API_URL}/api/courses/${this.props.params.id}/join`).then((response) => {
+      if (response.status === 200) {
+        this.setState({ alert: response.data.data, participating: true })
+      }
+      console.log(response.data)
+    })
+  }
+
+  leaveCourse = () => {
+    const axios = createAxios()
+
+    axios.delete(`${API_URL}/api/courses/${this.props.params.id}/leave `).then((response) => {
+      if (response.status === 200) {
+        this.setState({ alert: response.data.data, participating: false })
+      }
       console.log(response.data)
     })
   }
 
   render () {
+    const joinButton = this.state.participating ? 
+    <button className="button mb-16" onClick={this.leaveCourse}>Отписаться</button>
+    :
+    <button className="button mb-16" onClick={this.joinCourse}>Подписаться</button>
+
+    const alert = this.state.alert ?
+    <div className="alert alert-warning">{this.state.alert}</div>
+    :
+    null
+
+    const passStatistics = this.state.statistics ?
+    this.state.participating ?
+    <p>Курс пройден на {this.state.statistics}%</p>
+    :
+    null
+    : 
+    null
+
     return (
       <div className="container">
         <div className="row">
           <div className="col-4">
             <div className="panel h-600">
-              <img src={this.state.course.avatar} className="course-img" alt="Изображние курса" width="350px" height="200px"/>
-              <button className="button ml-32 mt-24" onClick={this.joinCourse}>Подписаться</button>
-              <p>{this.state.alert}</p>
-              <p className="mt-16 mb-0 mx-32 fs-20">{this.state.description}</p>
-              <p className="mt-16 mb-0 ml-32">Автор: {this.state.owner.firstName} {this.state.owner.lastName}</p>
-              <p className="mt-8 mb-0 ml-32">Дата создания: {this.state.createdAt}</p>
-              <p className="mt-8 mb-0 ml-32">Теги: #programming #database</p>
+              <img src={this.state.course.avatar} className="course-img mb-24" alt="Изображние курса" width="350px" height="200px" />
+              <div className="mx-32">
+                {passStatistics}
+                {joinButton}
+                {alert}
+                <p className="mb-16 fs-20">{this.state.description}</p>
+                <p className="mb-8">Автор: {this.state.owner.firstName} {this.state.owner.lastName}</p>
+                <p className="mb-8">Дата создания: {this.state.createdAt}</p>
+                <p className="mb-0">Теги: #programming #database</p>
+              </div>
             </div>
           </div>
           <div className="col-8">
@@ -84,17 +122,20 @@ class Course extends Component {
               <header className="ml-32 mt-24 fs-24 mb-20">{this.state.title}</header>
               {this.state.content.map((lecture) => {
                 return (
-                  <div>
+                  <div className="mb-16" key={lecture.id}>
                     <p className="fs-20 mx-32 mb-0">{lecture.title}</p>
-                    <hr className="hr mx-32  my-4"/>
+                    <hr className="hr mx-32  my-4" />
                     {lecture.content.map((content) => {
+                      const contentIcon = (content.type === 'MarkdownContent') ? lection : test
                       return (
-                        <div className="mx-32">
-                          <span className="circle mr-16"></span>
-                          <img src={test} className="mr-16" alt="Иконка контента"/>
-                          <Link to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`} className="link">{content.title}</Link>
-                          <hr className="hr my-4"/>
-                        </div>
+                        <Link to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`} className="link">
+                          <div className="mx-32 list-item" key={content.id}>
+                            <span className="circle mr-16"></span>
+                            <img src={contentIcon} className="mr-16" alt="Иконка контента" />
+                            {content.title}
+                            <hr className="hr my-4" />
+                          </div>
+                        </Link>
                       )
                     })}
                   </div>
