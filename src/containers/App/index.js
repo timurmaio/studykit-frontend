@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import Header from '../../components/Header'
 import { API_URL, createAxios } from '../../config'
 
-const userId = localStorage.getItem('user_id')
-const axios = createAxios()
-
 class App extends Component {
   constructor (props) {
     super(props)
@@ -21,6 +18,9 @@ class App extends Component {
   }
 
   componentDidMount () {
+    const axios = createAxios()
+    const userId = localStorage.getItem('user_id')
+
     axios.get(`${API_URL}/api/users/${userId}`).then((response) => {
       if (response.status === 200) {
         this.setState({ user: response.data })
