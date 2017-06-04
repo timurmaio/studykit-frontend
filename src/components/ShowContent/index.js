@@ -62,7 +62,7 @@ class ShowContent extends Component {
     axios.post(url, data).then((response) => {
       if (response.status === 201) {
         const solutionId = response.data.id
-        this.setState( {checkingInformation: "Идёт проверка..." })
+        this.setState( {checkingInformation: "Идёт проверка...", succeed: null })
 
         const waitingForSoluition = setInterval(() => {
           axios.get(`${API_URL}/api/sql_solutions/${solutionId}`).then((response) => {
@@ -95,10 +95,12 @@ class ShowContent extends Component {
     switch (this.state.succeed) {
       case true:
         alertType = 'alert-success'
+        break
 
       case false:
         alertType = 'alert-danger'
-    
+        break
+
       default:
         alertType = 'alert-info'
     }
