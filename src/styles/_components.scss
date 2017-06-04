@@ -73,19 +73,17 @@
       text-decoration: none;
       color: $primary-black;
     }
-
   }
 
   &--profile {
     padding: 4px 16px;
   }
-
 }
 
 .button {
   font-family: Roboto;
   display: inline-block;
-  font-weight: 700;
+  font-weight: 400;
   color: #fff;
   background-color: $primary-pink;
   line-height: 1.25;
@@ -183,9 +181,11 @@
   border: 1px solid $primary-gray;
   border-radius: 4px;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
   &:hover {
     border: 1px solid $primary-orange;
   }
+
   &:active {
     border: 1px solid $primary-orange;
   }
@@ -277,4 +277,47 @@
 
 .form-control:disabled {
   cursor: not-allowed;
+}
+
+.alert {
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
+}
+
+.alert-warning {
+    background-color: #fcf8e3;
+    border-color: #faf2cc;
+    color: #8a6d3b;
+}
+
+.alert-info {
+    background-color: #d9edf7;
+    border-color: #bcdff1;
+    color: #31708f;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebcccc;
+    color: #a94442;
+}
+
+.list-item {
+  cursor: pointer;
+
+  &:hover .circle {
+    background-color: #ffd20a;
+  }
+
+  &:hover .hr {
+    border-color: #ffd20a;
+  }
 }

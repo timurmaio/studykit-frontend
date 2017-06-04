@@ -380,6 +380,9 @@ body {
   color: #3d3d3d;
   background-color: #f1f1f1; }
 
+img {
+  max-width: 100%; }
+
 .text-center {
   text-align: center; }
 
@@ -1435,8 +1438,11 @@ html {
 .mr-4 {
   margin-right: 4px; }
 
+.mr-12 {
+  margin-right: 12px; }
+
 .mr-16 {
-  margin-right: 20px; }
+  margin-right: 16px; }
 
 .mr-20 {
   margin-right: 20px; }
@@ -1450,11 +1456,17 @@ html {
 .mb-8 {
   margin-bottom: 8px; }
 
+.mb-16 {
+  margin-bottom: 16px; }
+
 .mb-20 {
   margin-bottom: 20px; }
 
 .mb-24 {
   margin-bottom: 24px; }
+
+.mb-32 {
+  margin-bottom: 32px; }
 
 .ml-4 {
   margin-left: 4px; }
@@ -1468,6 +1480,10 @@ html {
 .mx-auto {
   margin-left: auto;
   margin-right: auto; }
+
+.mx-16 {
+  margin-left: 16px;
+  margin-right: 16px; }
 
 .mx-20 {
   margin-left: 20px;
@@ -1550,7 +1566,7 @@ html {
 .button {
   font-family: Roboto;
   display: inline-block;
-  font-weight: 700;
+  font-weight: 400;
   color: #fff;
   background-color: #fc6076;
   line-height: 1.25;
@@ -1708,3 +1724,36 @@ html {
 
 .form-control:disabled {
   cursor: not-allowed; }
+
+.alert {
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem; }
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d; }
+
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faf2cc;
+  color: #8a6d3b; }
+
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bcdff1;
+  color: #31708f; }
+
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442; }
+
+.list-item {
+  cursor: pointer; }
+  .list-item:hover .circle {
+    background-color: #ffd20a; }
+  .list-item:hover .hr {
+    border-color: #ffd20a; }
