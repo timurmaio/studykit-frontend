@@ -1,8 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { API_URL, createAxios } from '../../config'
+import lection from './lection.svg'
+import test from './test.svg'
+import video from './video.svg'
 
 const axios = createAxios()
+
+const sortContent = (arr) => {
+  let sortedArr = arr.map((item) => {
+    item.content.sort((a, b) => {
+      if (a.serial_number > b.serial_number) return 1;
+      if (a.serial_number < b.serial_number) return -1;
+      return 0;
+    })
+    return item
+  })
+
+  return sortedArr
+}
 
 class Course extends Component {
   constructor (props) {
@@ -22,7 +38,8 @@ class Course extends Component {
   componentDidMount () {
     axios.get(API_URL + '/api/courses/' + this.props.params.id).then((response) => {
       console.log(response.data)
-      this.setState({ title: response.data.title, description: response.data.description, id: response.data.id, content: response.data.lectures, course: response.data, owner: response.data.owner, createdAt: response.data.createdAt })
+      const content = sortContent(response.data.lectures)
+      this.setState({ title: response.data.title, description: response.data.description, id: response.data.id, content: content, course: response.data, owner: response.data.owner, createdAt: response.data.createdAt })
     })
   }
 
@@ -49,7 +66,7 @@ class Course extends Component {
 
   render () {
     return (
-      <div className="container mt-40">
+      <div className="container">
         <div className="row">
           <div className="col-4">
             <div className="panel h-600">
@@ -64,10 +81,23 @@ class Course extends Component {
           </div>
           <div className="col-8">
             <div className="panel h-600">
-              <header className="ml-32 mt-24 fs-24">{this.state.title}</header>
+              <header className="ml-32 mt-24 fs-24 mb-20">{this.state.title}</header>
               {this.state.content.map((lecture) => {
                 return (
-                  <span>{lecture.title}</span>
+                  <div>
+                    <p className="fs-20 mx-32 mb-0">{lecture.title}</p>
+                    <hr className="hr mx-32  my-4"/>
+                    {lecture.content.map((content) => {
+                      return (
+                        <div className="mx-32">
+                          <span className="circle mr-16"></span>
+                          <img src={test} className="mr-16" alt="Иконка контента"/>
+                          <Link to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`} className="link">{content.title}</Link>
+                          <hr className="hr my-4"/>
+                        </div>
+                      )
+                    })}
+                  </div>
                 )
               })}
             </div>
