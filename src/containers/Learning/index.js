@@ -30,9 +30,13 @@ class Learning extends Component {
   render () {
     return (
       <div className="container">
-        <div className="row">
-          {this.state.courses.map(this.renderCourseCard)}
-        </div>
+        {this.state.courses.length ?
+          <div className="row">
+            {this.state.courses.map(this.renderCourseCard)}
+          </div>
+          :
+          <span className="text-center mt-40">У вас ещё нет курсов.</span>
+        }
       </div>
     )
   }
