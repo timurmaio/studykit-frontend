@@ -28,21 +28,32 @@ class Course extends Component {
 
     axios.get(API_URL + '/api/courses/' + this.props.params.id).then((response) => {
       console.log(response.data)
-      this.setState({ title: response.data.title, description: response.data.description, id: response.data.id, content: response.data.lectures, course: response.data, owner: response.data.owner, createdAt: response.data.createdAt })
+      this.setState({
+        id: response.data.id,
+        title: response.data.title,
+        description: response.data.description,
+        content: response.data.lectures,
+        course: response.data,
+        owner: response.data.owner,
+        solvedIds: response.data.solvedIds,
+        createdAt: response.data.createdAt
+      })
     })
 
-    axios.get(`${API_URL}/api/courses/${this.props.params.id}/participating `).then((response) => {
-      this.setState({ participating: response.data.participating })
-      console.log(response.data)
-    })
+    axios.get(`${API_URL}/api/courses/${this.props.params.id}/participating `)
+      .then((response) => {
+        this.setState({ participating: response.data.participating })
+        console.log(response.data)
+      })
 
-    axios.get(`${API_URL}/api/courses/${this.props.params.id}/participants/${userId}/statistics`).then((response) => {
-      const courseStatistics = Math.round(response.data.data.solved_problems / response.data.data.problems * 100)
-      // console.log(courseStatistics)
+    axios.get(`${API_URL}/api/courses/${this.props.params.id}/participants/${userId}/statistics`)
+      .then((response) => {
+        const courseStatistics = Math.round(response.data.data.solved_problems / response.data.data.problems * 100)
+        // console.log(courseStatistics)
 
-      this.setState({ statistics: courseStatistics })
-      console.log(response.data)
-    })
+        this.setState({ statistics: courseStatistics })
+        console.log(response.data)
+      })
   }
 
   renderItem = (item) => {
@@ -87,25 +98,25 @@ class Course extends Component {
       this.setState({ alert: 'Вы не подписаны на курс' })
     }
   }
- 
+
   render () {
-    const joinButton = this.state.participating ? 
-    <button className="button mb-16" onClick={this.leaveCourse}>Отписаться</button>
-    :
-    <button className="button mb-16" onClick={this.joinCourse}>Подписаться</button>
+    const joinButton = this.state.participating ?
+      <button className="button mb-16" onClick={this.leaveCourse}>Отписаться</button>
+      :
+      <button className="button mb-16" onClick={this.joinCourse}>Подписаться</button>
 
     const alert = this.state.alert ?
-    <div className="alert alert-warning">{this.state.alert}</div>
-    :
-    null
+      <div className="alert alert-warning">{this.state.alert}</div>
+      :
+      null
 
     const passStatistics = this.state.statistics ?
-    this.state.participating ?
-    <p>Курс пройден на {this.state.statistics}%</p>
-    :
-    null
-    : 
-    null
+      this.state.participating ?
+        <p>Курс пройден на {this.state.statistics}%</p>
+        :
+        null
+      :
+      null
 
     return (
       <div className="container">
@@ -127,6 +138,7 @@ class Course extends Component {
           <div className="col-8">
             <div className="panel h-600">
               <header className="ml-32 mt-24 fs-24 mb-20">{this.state.title}</header>
+
               {this.state.content.map((lecture) => {
                 return (
                   <div className="mb-16" key={lecture.id}>
@@ -137,9 +149,20 @@ class Course extends Component {
                       return (
                         <Link to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`} className="link" onClick={this.checkAccessToContent}>
                           <div className="mx-32 list-item" key={content.id}>
-                            <span className="circle circle--green ml-8 mr-16"></span>
+                            {this.state.solvedIds.indexOf(content.id) >= 0
+                              && this.state.participating
+                              && <span className="circle circle--green ml-8 mr-16"></span>
+                            }
+                            {this.state.solvedIds.indexOf(content.id) === -1
+                              && this.state.participating
+                              && <span className="circle ml-8 mr-16"></span>
+                            }
                             <img src={contentIcon} className="mr-16" alt="Иконка контента" />
                             {content.title}
+                            {this.state.solvedIds.indexOf(content.id) >= 0
+                              && this.state.participating
+                              && <span className="ml-16 fs-12" style={{ fontWeight: '200', color: 'gray' }}>Пройдено</span>
+                            }
                             <hr className="hr my-4" />
                           </div>
                         </Link>
@@ -148,6 +171,7 @@ class Course extends Component {
                   </div>
                 )
               })}
+
             </div>
           </div>
         </div>
