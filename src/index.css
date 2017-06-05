@@ -378,7 +378,8 @@ output {
 body {
   font-size: 16px;
   color: #3d3d3d;
-  background-color: #f1f1f1; }
+  background-color: #f1f1f1;
+  font-family: 'Roboto', sans-serif; }
 
 img {
   max-width: 100%; }
@@ -1474,6 +1475,9 @@ html {
 .ml-8 {
   margin-left: 8px; }
 
+.ml-16 {
+  margin-left: 16px; }
+
 .ml-20 {
   margin-left: 20px; }
 
@@ -1509,6 +1513,9 @@ html {
 .h-600 {
   height: 600px; }
 
+.fs-12 {
+  font-size: 12px; }
+
 .fs-20 {
   font-size: 20px; }
 
@@ -1528,7 +1535,7 @@ html {
     display: flex;
     width: 33.333333%; }
   .top-panel_logo {
-    font-family: KaushanScript-Regular;
+    font-family: Kaushan Script;
     font-size: 36px;
     color: #3d3d3d;
     margin-left: auto;
@@ -1670,11 +1677,13 @@ html {
   border-bottom: 1px solid #f1f1f1; }
 
 .circle {
-  display: inline-flex;
+  display: inline-table;
   height: 12px;
   width: 12px;
   border: 1px solid #3d3d3d;
   border-radius: 50%; }
+  .circle--green {
+    background-color: #FFD20A; }
 
 .form-control {
   display: block;
@@ -1755,8 +1764,11 @@ html {
   color: #a94442; }
 
 .list-item {
-  cursor: pointer; }
+  cursor: pointer;
+  overflow: hidden; }
   .list-item:hover .circle {
-    background-color: #ffd20a; }
+    background-color: #226FCB; }
   .list-item:hover .hr {
-    border-color: #ffd20a; }
+    border-color: #226FCB; }
+  .list-item:hover + .hr {
+    border-color: #226FCB; }

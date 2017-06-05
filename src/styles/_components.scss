@@ -15,7 +15,7 @@
   }
 
   &_logo {
-    font-family: KaushanScript-Regular;
+    font-family: Kaushan Script;
     font-size: 36px;
     color: $primary-black;
     margin-left: auto;
@@ -211,11 +211,15 @@
 }
 
 .circle {
-  display: inline-flex;
+  display: inline-table;
   height: 12px;
   width: 12px;
   border: 1px solid $primary-black;
   border-radius: 50%;
+
+  &--green {
+    background-color: #FFD20A;
+  }
 }
 
 .form-control {
@@ -312,12 +316,24 @@
 
 .list-item {
   cursor: pointer;
+  // max-height: 32px;
+  overflow: hidden;
+
+  &:hover {
+    // padding-top: 4px;
+    // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.20), 0 1px 3px 0 rgba(0, 0, 0, 0.10);
+    // transition: padding 0.2s ease-in-out;
+  }
 
   &:hover .circle {
-    background-color: #ffd20a;
+    background-color: #226FCB;
   }
 
   &:hover .hr {
-    border-color: #ffd20a;
+    border-color: #226FCB;
+  }
+
+  &:hover + .hr {
+    border-color: #226FCB;
   }
 }
