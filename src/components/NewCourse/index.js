@@ -18,7 +18,6 @@ class NewCourse extends Component {
     event.preventDefault()
 
     const axios = createAxios()
-    
     const courseId = this.props.params.id
 
     const url = API_URL + '/api/courses/' + courseId + '/content'

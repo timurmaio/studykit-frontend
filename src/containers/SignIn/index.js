@@ -27,7 +27,7 @@ class SignIn extends Component {
     event.preventDefault()
 
     const url = `${API_URL}/api/users/login`
-    
+
     const signInData = {
       user: {
         email: this.state.email,

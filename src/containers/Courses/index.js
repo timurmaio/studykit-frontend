@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { API_URL, createAxios } from '../../config'
 import CourseCard from '../../components/CourseCard'
-    
+
 class Courses extends Component {
   constructor (props) {
     super(props)
@@ -13,7 +13,7 @@ class Courses extends Component {
 
   componentDidMount () {
     const axios = createAxios()
-    
+
     axios.get(`${API_URL}/api/courses`).then((response) => {
       this.setState({ courses: response.data })
     })

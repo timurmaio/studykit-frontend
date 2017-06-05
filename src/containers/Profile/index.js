@@ -23,7 +23,7 @@ class Profile extends Component {
         <div className="row">
           <div className="col-3">
             <div className="panel h-600">
-              <img src="" alt=""/>
+              <img src="" alt="" />
               <button>Изменить фото</button>
               <button onClick={this.handleSignOut}>Выйти</button>
             </div>

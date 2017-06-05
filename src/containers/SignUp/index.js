@@ -47,7 +47,7 @@ class SignUp extends Component {
         browserHistory.push('/courses')
       }
     }).catch((error) => {
-        this.setState({ error: error.response.data.errors })
+      this.setState({ error: error.response.data.errors })
     })
   }
 

@@ -13,7 +13,7 @@ class Learning extends Component {
   componentDidMount () {
     const axios = createAxios()
     const userId = localStorage.getItem('user_id')
-    
+
     axios.get(`${API_URL}/api/courses?participated_by=${userId}`).then((response) => {
       this.setState({ courses: response.data })
     })
@@ -22,7 +22,7 @@ class Learning extends Component {
   renderCourseCard = (course) => {
     return (
       <div className="col-3" key={course.id}>
-        <CourseCard {...course}/>
+        <CourseCard {...course} />
       </div>
     )
   }
