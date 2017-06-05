@@ -81,6 +81,13 @@ class Course extends Component {
     })
   }
 
+  checkAccessToContent = (event) => {
+    if (!this.state.participating) {
+      event.preventDefault()
+      this.setState({ alert: 'Вы не подписаны на курс' })
+    }
+  }
+ 
   render () {
     const joinButton = this.state.participating ? 
     <button className="button mb-16" onClick={this.leaveCourse}>Отписаться</button>
@@ -128,9 +135,9 @@ class Course extends Component {
                     {lecture.content.map((content) => {
                       const contentIcon = (content.type === 'MarkdownContent') ? lection : test
                       return (
-                        <Link to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`} className="link">
+                        <Link to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`} className="link" onClick={this.checkAccessToContent}>
                           <div className="mx-32 list-item" key={content.id}>
-                            <span className="circle mr-16"></span>
+                            <span className="circle circle--green ml-8 mr-16"></span>
                             <img src={contentIcon} className="mr-16" alt="Иконка контента" />
                             {content.title}
                             <hr className="hr my-4" />
