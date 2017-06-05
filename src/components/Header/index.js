@@ -16,12 +16,12 @@ class Header extends Component {
   render () {
     const signed = localStorage.getItem('jwt_token')
 
-    const signButton = signed ? 
+    const signButton = signed ?
       <button type="button" onClick={this.handleSignOut} className="button">Выйти</button>
       :
       <button type="button" onClick={this.handleSignIn} className="button">Войти</button>
 
-    const linkToProfile = signed ? 
+    const linkToProfile = signed ?
       <Link to="/profile" className="link link--profile flex align-items-center">
         <img src={person} width="12px" className="mr-4" alt="" />
         <span className="mr-4">Профиль</span>
@@ -35,9 +35,9 @@ class Header extends Component {
       null
 
     const userName = localStorage.getItem('jwt_token') ?
-    <span style={{ lineHeight: '32px', marginRight: '16px' }}>{this.props.firstName} {this.props.lastName}</span>
-    :
-    null
+      <span style={{ lineHeight: '32px', marginRight: '16px' }}>{this.props.firstName} {this.props.lastName}</span>
+      :
+      null
 
     return (
       <header className="top-panel mb-20">
