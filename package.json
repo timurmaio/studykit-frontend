@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
+    "prettier": "^1.4.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",
@@ -19,6 +20,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass src/styles/index.scss src/index.css",
-    "watch-css": "yarn build-css && node-sass src/styles/index.scss src/index.css --watch"
+    "watch-css": "yarn build-css && node-sass src/styles/index.scss src/index.css --watch",
+    "prettier": "prettier --write --no-semi --single-quote --jsx-bracket-same-line \"src/**/*.js\""
   }
 }
