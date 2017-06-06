@@ -5,7 +5,7 @@ import SignUpForm from '../../components/SignUpForm'
 import { API_URL } from '../../config'
 
 class SignUp extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       firstName: '',
@@ -16,7 +16,7 @@ class SignUp extends Component {
     }
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const name = event.target.name
     const value = event.target.value
 
@@ -25,7 +25,7 @@ class SignUp extends Component {
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
 
     const url = `${API_URL}/api/users`
@@ -39,24 +39,31 @@ class SignUp extends Component {
       }
     }
 
-    axios.post(url, signUpData).then((response) => {
-      if (response.status === 201) {
-        console.log('Зарегинились!')
-        localStorage.setItem('jwt_token', response.data.jwtToken)
-        localStorage.setItem('user_id', response.data.id)
-        browserHistory.push('/courses')
-      }
-    }).catch((error) => {
-      this.setState({ error: error.response.data.errors })
-    })
+    axios
+      .post(url, signUpData)
+      .then(response => {
+        if (response.status === 201) {
+          console.log('Зарегинились!')
+          localStorage.setItem('jwt_token', response.data.jwtToken)
+          localStorage.setItem('user_id', response.data.id)
+          browserHistory.push('/courses')
+        }
+      })
+      .catch(error => {
+        this.setState({ error: error.response.data.errors })
+      })
   }
 
-  render () {
+  render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-4 offset-4">
-            <SignUpForm error={this.state.error} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+            <SignUpForm
+              error={this.state.error}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
           </div>
         </div>
       </div>

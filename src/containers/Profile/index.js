@@ -3,13 +3,11 @@ import { browserHistory } from 'react-router'
 import { API_URL, createAxios } from '../../config'
 
 class Profile extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
 
-  componentDidMount () {
-
-  }
+  componentDidMount() {}
 
   handleSignOut = () => {
     localStorage.removeItem('jwt_token')
@@ -17,7 +15,7 @@ class Profile extends Component {
     browserHistory.push('/signin')
   }
 
-  render () {
+  render() {
     return (
       <div className="container">
         <div className="row">

@@ -25,7 +25,10 @@ const routes = (
 
       <Route path="/courses" component={Courses} />
       <Route path="/courses/:id" component={Course} />
-      <Route path="/courses/:id/lectures/:lectureId/contents/:contentId" component={ShowContent} />
+      <Route
+        path="/courses/:id/lectures/:lectureId/contents/:contentId"
+        component={ShowContent}
+      />
 
       <Route path="/learning" component={Learning} />
       <Route path="/teaching" component={Profile} />

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 class Teaching extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
 
-  render () {
+  render() {
     return (
       <div className="container">
         <div className="row">
