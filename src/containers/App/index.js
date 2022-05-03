@@ -12,8 +12,8 @@ class App extends Component {
         avatar: "",
         firstName: "",
         lastName: "",
-        role: ""
-      }
+        role: "",
+      },
     };
   }
 
@@ -24,7 +24,7 @@ class App extends Component {
     if (userId) {
       axios
         .get(`${API_URL}/api/users/${userId}`)
-        .then(response => {
+        .then((response) => {
           if (response.status === 200) {
             this.setState({ user: response.data });
           } else {
@@ -33,7 +33,7 @@ class App extends Component {
           }
           // console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error.response.data.errors);
         });
     }

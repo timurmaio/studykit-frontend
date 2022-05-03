@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "react-router";
 
-const SignUpForm = props => {
+const SignUpForm = (props) => {
   return (
     <form
       id="signup-form"
       className="auth-form shadow mt-20"
-      onSubmit={props.handleSubmit}>
+      onSubmit={props.handleSubmit}
+    >
       <header className="auth-form_head mb-24">Регистрация</header>
 
-      <label className="auth-form_label" htmlFor="firstName">Имя:</label>
+      <label className="auth-form_label" htmlFor="firstName">
+        Имя:
+      </label>
       <input
         id="firstName"
         name="firstName"
@@ -20,7 +23,9 @@ const SignUpForm = props => {
         required
       />
 
-      <label className="auth-form_label" htmlFor="lastName">Фамилия:</label>
+      <label className="auth-form_label" htmlFor="lastName">
+        Фамилия:
+      </label>
       <input
         id="lastName"
         name="lastName"
@@ -44,7 +49,9 @@ const SignUpForm = props => {
         required
       />
 
-      <label className="auth-form_label" htmlFor="password">Пароль:</label>
+      <label className="auth-form_label" htmlFor="password">
+        Пароль:
+      </label>
       <input
         id="password"
         name="password"
@@ -63,7 +70,8 @@ const SignUpForm = props => {
         to="/signin"
         id="signup-form-change"
         className="button button--auth-change"
-        onClick={props.changeFormType}>
+        onClick={props.changeFormType}
+      >
         Вход
       </Link>
 

@@ -8,9 +8,7 @@ class Teaching extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          Teaching!
-        </div>
+        <div className="row">Teaching!</div>
       </div>
     );
   }

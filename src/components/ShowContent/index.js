@@ -20,7 +20,7 @@ class ShowContent extends Component {
       solvedIds: [],
       type: "",
       checkingInformation: "",
-      error: ""
+      error: "",
     };
   }
 
@@ -30,22 +30,21 @@ class ShowContent extends Component {
 
     axios
       .get(
-        `${API_URL}/api/lectures/${this.props.params.lectureId}/content/${this
-          .props.params.contentId}`
+        `${API_URL}/api/lectures/${this.props.params.lectureId}/content/${this.props.params.contentId}`
       )
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         this.setState({
           contentId: response.data.sqlProblemId,
           title: response.data.title,
           description: response.data.body,
-          type: response.data.type
+          type: response.data.type,
         });
       });
 
     axios
       .get(API_URL + "/api/courses/" + this.props.params.id)
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         this.setState({
           id: response.data.id,
@@ -55,25 +54,25 @@ class ShowContent extends Component {
           course: response.data,
           owner: response.data.owner,
           solvedIds: response.data.solvedIds,
-          createdAt: response.data.createdAt
+          createdAt: response.data.createdAt,
         });
       });
 
     axios
       .get(`${API_URL}/api/courses/${this.props.params.id}/participating `)
-      .then(response => {
+      .then((response) => {
         this.setState({ participating: response.data.participating });
         console.log(response.data);
       });
 
     axios
       .get(
-        `${API_URL}/api/courses/${this.props.params
-          .id}/participants/${userId}/statistics`
+        `${API_URL}/api/courses/${this.props.params.id}/participants/${userId}/statistics`
       )
-      .then(response => {
+      .then((response) => {
         const courseStatistics = Math.round(
-          response.data.data.solved_problems / response.data.data.problems * 100
+          (response.data.data.solved_problems / response.data.data.problems) *
+            100
         );
         // console.log(courseStatistics)
 
@@ -98,27 +97,26 @@ class ShowContent extends Component {
     this.setState({
       solution: "",
       checkingInformation: "",
-      alert: ""
+      alert: "",
     });
 
     axios
       .get(
-        `${API_URL}/api/lectures/${nextProps.params
-          .lectureId}/content/${nextProps.params.contentId}`
+        `${API_URL}/api/lectures/${nextProps.params.lectureId}/content/${nextProps.params.contentId}`
       )
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         this.setState({
           contentId: response.data.sqlProblemId,
           title: response.data.title,
           description: response.data.body,
-          type: response.data.type
+          type: response.data.type,
         });
       });
 
     axios
       .get(API_URL + "/api/courses/" + nextProps.params.id)
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         this.setState({
           id: response.data.id,
@@ -128,25 +126,25 @@ class ShowContent extends Component {
           course: response.data,
           owner: response.data.owner,
           solvedIds: response.data.solvedIds,
-          createdAt: response.data.createdAt
+          createdAt: response.data.createdAt,
         });
       });
 
     axios
       .get(`${API_URL}/api/courses/${this.props.params.id}/participating `)
-      .then(response => {
+      .then((response) => {
         this.setState({ participating: response.data.participating });
         console.log(response.data);
       });
 
     axios
       .get(
-        `${API_URL}/api/courses/${this.props.params
-          .id}/participants/${userId}/statistics`
+        `${API_URL}/api/courses/${this.props.params.id}/participants/${userId}/statistics`
       )
-      .then(response => {
+      .then((response) => {
         const courseStatistics = Math.round(
-          response.data.data.solved_problems / response.data.data.problems * 100
+          (response.data.data.solved_problems / response.data.data.problems) *
+            100
         );
         // console.log(courseStatistics)
 
@@ -155,16 +153,16 @@ class ShowContent extends Component {
       });
   }
 
-  handleTextareaChange = event => {
+  handleTextareaChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  checkTheSolution = event => {
+  checkTheSolution = (event) => {
     event.preventDefault();
 
     const axios = createAxios();
@@ -176,34 +174,34 @@ class ShowContent extends Component {
     let data = {
       sql_solution: {
         sql_problem_id: this.state.contentId,
-        code: this.state.solution
-      }
+        code: this.state.solution,
+      },
     };
 
     axios
       .post(url, data)
-      .then(response => {
+      .then((response) => {
         if (response.status === 201) {
           const solutionId = response.data.id;
           this.setState({
             checkingInformation: "Идёт проверка...",
-            succeed: null
+            succeed: null,
           });
 
           const waitingForSoluition = setInterval(() => {
             axios
               .get(`${API_URL}/api/sql_solutions/${solutionId}`)
-              .then(response => {
+              .then((response) => {
                 if (response.data.succeed === true) {
                   this.setState({
                     checkingInformation: "Решение верно!",
-                    succeed: true
+                    succeed: true,
                   });
                   clearInterval(waitingForSoluition);
                 } else if (response.data.succeed === false) {
                   this.setState({
                     checkingInformation: "Решение неверно, попробуйте ещё раз!",
-                    succeed: false
+                    succeed: false,
                   });
                   clearInterval(waitingForSoluition);
                 }
@@ -211,7 +209,7 @@ class ShowContent extends Component {
           }, 1000);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         const errorText = error.response.data.errors[0];
         this.setState({ alert: errorText });
         console.log(errorText);
@@ -219,9 +217,9 @@ class ShowContent extends Component {
   };
 
   render() {
-    const alert = this.state.alert
-      ? <div className="alert alert-danger">{this.state.alert}</div>
-      : null;
+    const alert = this.state.alert ? (
+      <div className="alert alert-danger">{this.state.alert}</div>
+    ) : null;
 
     let alertType;
 
@@ -238,17 +236,17 @@ class ShowContent extends Component {
         alertType = "alert-info";
     }
 
-    const checkingInformation = this.state.checkingInformation
-      ? <div className={`alert ${alertType}`}>
-          {this.state.checkingInformation}
-        </div>
-      : null;
+    const checkingInformation = this.state.checkingInformation ? (
+      <div className={`alert ${alertType}`}>
+        {this.state.checkingInformation}
+      </div>
+    ) : null;
 
-    const passStatistics = this.state.statistics
-      ? this.state.participating
-        ? <p>Курс пройден на {this.state.statistics}%</p>
-        : null
-      : null;
+    const passStatistics = this.state.statistics ? (
+      this.state.participating ? (
+        <p>Курс пройден на {this.state.statistics}%</p>
+      ) : null
+    ) : null;
 
     return (
       <div className="container">
@@ -258,8 +256,10 @@ class ShowContent extends Component {
               <div className="mx-16 mt-24">
                 <Link
                   to={`/courses/${this.props.params.id}`}
-                  className="link flex mb-16">
-                  <img src={arrow} alt="" className="mr-12" />Вернуться к курсу
+                  className="link flex mb-16"
+                >
+                  <img src={arrow} alt="" className="mr-12" />
+                  Вернуться к курсу
                 </Link>
                 <header className="fs-24 mb-20">
                   {this.state.courseTitle}
@@ -267,30 +267,31 @@ class ShowContent extends Component {
 
                 {passStatistics}
 
-                {this.state.content.map(lecture => {
+                {this.state.content.map((lecture) => {
                   return (
                     <div className="mb-16" key={lecture.id}>
                       <p className="fs-20 mb-0">{lecture.title}</p>
                       <hr className="hr my-4" />
 
-                      {lecture.content.map(content => {
-                        const contentIcon = content.type === "MarkdownContent"
-                          ? lection
-                          : test;
+                      {lecture.content.map((content) => {
+                        const contentIcon =
+                          content.type === "MarkdownContent" ? lection : test;
                         return (
                           <Link
-                            to={`/courses/${this.props.params
-                              .id}/lectures/${lecture.id}/contents/${content.id}`}
+                            to={`/courses/${this.props.params.id}/lectures/${lecture.id}/contents/${content.id}`}
                             className="link"
-                            key={content.id}>
+                            key={content.id}
+                          >
                             <div className="list-item flex align-items-center">
                               {this.state.solvedIds.indexOf(content.id) >= 0 &&
-                                this.state.participating &&
-                                <span className="circle circle--green ml-8 mr-16" />}
+                                this.state.participating && (
+                                  <span className="circle circle--green ml-8 mr-16" />
+                                )}
                               {this.state.solvedIds.indexOf(content.id) ===
                                 -1 &&
-                                this.state.participating &&
-                                <span className="circle ml-8 mr-16" />}
+                                this.state.participating && (
+                                  <span className="circle ml-8 mr-16" />
+                                )}
                               <img
                                 src={contentIcon}
                                 className="mr-16"
@@ -300,22 +301,22 @@ class ShowContent extends Component {
                                 {content.title}
                               </div>
                               {this.state.solvedIds.indexOf(content.id) >= 0 &&
-                                this.state.participating &&
-                                <div
-                                  className="ml-16 fs-12"
-                                  style={{ fontWeight: "200", color: "gray" }}>
-                                  Пройдено
-                                </div>}
+                                this.state.participating && (
+                                  <div
+                                    className="ml-16 fs-12"
+                                    style={{ fontWeight: "200", color: "gray" }}
+                                  >
+                                    Пройдено
+                                  </div>
+                                )}
                             </div>
                             <hr className="hr my-4" />
                           </Link>
                         );
                       })}
-
                     </div>
                   );
                 })}
-
               </div>
             </div>
           </div>
@@ -329,7 +330,7 @@ class ShowContent extends Component {
                 source={this.state.description}
               />
               <div className="form-group mx-32">
-                {this.state.type !== "MarkdownContent" &&
+                {this.state.type !== "MarkdownContent" && (
                   <form>
                     <label htmlFor="exampleTextarea">
                       Введите сюда своё решение
@@ -343,12 +344,14 @@ class ShowContent extends Component {
                     />
                     <button
                       className="button mb-16"
-                      onClick={this.checkTheSolution}>
+                      onClick={this.checkTheSolution}
+                    >
                       Отправить решение
                     </button>
                     {alert}
                     {checkingInformation}
-                  </form>}
+                  </form>
+                )}
               </div>
             </div>
           </div>

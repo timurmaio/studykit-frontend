@@ -7,14 +7,14 @@ class Courses extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      courses: []
+      courses: [],
     };
   }
 
   componentDidMount() {
     const axios = createAxios();
 
-    axios.get(`${API_URL}/api/courses`).then(response => {
+    axios.get(`${API_URL}/api/courses`).then((response) => {
       this.setState({ courses: response.data });
     });
   }

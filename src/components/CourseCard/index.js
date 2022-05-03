@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const CourseCard = props => {
+const CourseCard = (props) => {
   return (
     <Link to={`courses/${props.id}`} className="link link--black">
       <div className="card">

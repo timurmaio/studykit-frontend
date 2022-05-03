@@ -10,20 +10,20 @@ class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ""
+      error: "",
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const url = `${API_URL}/api/users/login`;
@@ -31,13 +31,13 @@ class SignIn extends Component {
     const signInData = {
       user: {
         email: this.state.email,
-        password: this.state.password
-      }
+        password: this.state.password,
+      },
     };
 
     axios
       .post(url, signInData)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           console.log("Залогинились!");
           localStorage.setItem("jwt_token", response.data.jwtToken);
@@ -45,7 +45,7 @@ class SignIn extends Component {
           browserHistory.push("/courses");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ error: error.response.data.errors });
       });
   };

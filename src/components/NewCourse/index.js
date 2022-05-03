@@ -9,11 +9,11 @@ class NewCourse extends Component {
       type: "MarkdownContent",
       serial: "",
       title: "",
-      body: ""
+      body: "",
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const axios = createAxios();
@@ -26,11 +26,11 @@ class NewCourse extends Component {
         title: this.state.title,
         body: this.state.body,
         serial_number: this.state.serial,
-        type: this.state.type
-      }
+        type: this.state.type,
+      },
     };
 
-    axios.post(url, data).then(response => {
+    axios.post(url, data).then((response) => {
       if (response.status === 201) {
         console.log("Контент успешно создан");
         browserHistory.push(`/courses/${courseId}`);
@@ -38,7 +38,7 @@ class NewCourse extends Component {
     });
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
@@ -94,7 +94,8 @@ class NewCourse extends Component {
         <button
           type="submit"
           className="btn btn-success"
-          onClick={this.handleSubmit}>
+          onClick={this.handleSubmit}
+        >
           Создать
         </button>
       </form>

@@ -6,7 +6,7 @@ class Learning extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      courses: []
+      courses: [],
     };
   }
 
@@ -16,12 +16,12 @@ class Learning extends Component {
 
     axios
       .get(`${API_URL}/api/courses?participated_by=${userId}`)
-      .then(response => {
+      .then((response) => {
         this.setState({ courses: response.data });
       });
   }
 
-  renderCourseCard = course => {
+  renderCourseCard = (course) => {
     return (
       <div className="col-3" key={course.id}>
         <CourseCard {...course} />
@@ -32,11 +32,13 @@ class Learning extends Component {
   render() {
     return (
       <div className="container">
-        {this.state.courses.length
-          ? <div className="row">
-              {this.state.courses.map(this.renderCourseCard)}
-            </div>
-          : <span className="text-center mt-40">У вас ещё нет курсов.</span>}
+        {this.state.courses.length ? (
+          <div className="row">
+            {this.state.courses.map(this.renderCourseCard)}
+          </div>
+        ) : (
+          <span className="text-center mt-40">У вас ещё нет курсов.</span>
+        )}
       </div>
     );
   }

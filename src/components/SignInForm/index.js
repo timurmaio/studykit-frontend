@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
 
-const SignInForm = props => {
+const SignInForm = (props) => {
   return (
     <form
       id="signin-form"
       className="auth-form shadow mt-40"
-      onSubmit={props.handleSubmit}>
+      onSubmit={props.handleSubmit}
+    >
       <header className="auth-form_head mb-24">Вход в систему</header>
 
       <label className="auth-form_label" htmlFor="email">
@@ -22,7 +23,9 @@ const SignInForm = props => {
         required
       />
 
-      <label className="auth-form_label" htmlFor="password">Пароль:</label>
+      <label className="auth-form_label" htmlFor="password">
+        Пароль:
+      </label>
       <input
         id="password"
         name="password"
@@ -40,7 +43,8 @@ const SignInForm = props => {
       <Link
         to="/signup"
         id="signin-form-change"
-        className="button button--auth-change">
+        className="button button--auth-change"
+      >
         Регистрация
       </Link>
 
