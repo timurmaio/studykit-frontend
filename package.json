@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "yarn build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build-css": "node-sass src/styles/index.scss src/index.css",
-    "watch-css": "yarn build-css && node-sass src/styles/index.scss src/index.css --watch",
-    "fmt": "prettier --write --jsx-bracket-same-line \"src/**/*.js\""
+    "fmt": "prettier --write '**/*.{js,jsx,json,ts,tsx,css,html}'"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -21,7 +19,6 @@
     "react-router": "3.0.5"
   },
   "devDependencies": {
-    "node-sass": "^4.5.3",
     "react-scripts": "^1.0.7"
   }
 }
