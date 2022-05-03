@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
-import { API_URL, createAxios } from '../../config'
+import React, { Component } from "react";
+import { browserHistory } from "react-router";
+import { API_URL, createAxios } from "../../config";
 
 class NewCourse extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      type: 'MarkdownContent',
-      serial: '',
-      title: '',
-      body: ''
-    }
+      type: "MarkdownContent",
+      serial: "",
+      title: "",
+      body: ""
+    };
   }
 
   handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const axios = createAxios()
-    const courseId = this.props.params.id
+    const axios = createAxios();
+    const courseId = this.props.params.id;
 
-    const url = API_URL + '/api/courses/' + courseId + '/content'
+    const url = API_URL + "/api/courses/" + courseId + "/content";
 
     const data = {
       course_content: {
@@ -28,22 +28,22 @@ class NewCourse extends Component {
         serial_number: this.state.serial,
         type: this.state.type
       }
-    }
+    };
 
     axios.post(url, data).then(response => {
       if (response.status === 201) {
-        console.log('Контент успешно создан')
-        browserHistory.push(`/courses/${courseId}`)
+        console.log("Контент успешно создан");
+        browserHistory.push(`/courses/${courseId}`);
       }
-    })
-  }
+    });
+  };
 
   handleInputChange = event => {
-    const target = event.target
-    const name = target.name
-    const value = target.value
-    this.setState({ [name]: value })
-  }
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    this.setState({ [name]: value });
+  };
 
   render() {
     return (
@@ -98,8 +98,8 @@ class NewCourse extends Component {
           Создать
         </button>
       </form>
-    )
+    );
   }
 }
 
-export default NewCourse
+export default NewCourse;

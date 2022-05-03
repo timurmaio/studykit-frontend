@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from "react";
+import { Link } from "react-router";
 
 const CourseCard = props => {
   return (
@@ -16,7 +16,7 @@ const CourseCard = props => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default CourseCard
+export default CourseCard;

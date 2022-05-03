@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
-import { API_URL, createAxios } from '../../config'
+import React, { Component } from "react";
+import { browserHistory } from "react-router";
+import { API_URL, createAxios } from "../../config";
 
 class Profile extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {}
 
   handleSignOut = () => {
-    localStorage.removeItem('jwt_token')
-    localStorage.removeItem('user_id')
-    browserHistory.push('/signin')
-  }
+    localStorage.removeItem("jwt_token");
+    localStorage.removeItem("user_id");
+    browserHistory.push("/signin");
+  };
 
   render() {
     return (
@@ -34,8 +34,8 @@ class Profile extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Profile
+export default Profile;

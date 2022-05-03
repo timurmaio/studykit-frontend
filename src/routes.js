@@ -1,19 +1,19 @@
-import React from 'react'
-import { Router, Route, Redirect, browserHistory } from 'react-router'
+import React from "react";
+import { Router, Route, Redirect, browserHistory } from "react-router";
 
 // Containers
-import App from './containers/App'
-import Courses from './containers/Courses'
-import Learning from './containers/Learning'
-import Profile from './containers/Profile'
-import SignIn from './containers/SignIn'
-import SignUp from './containers/SignUp'
+import App from "./containers/App";
+import Courses from "./containers/Courses";
+import Learning from "./containers/Learning";
+import Profile from "./containers/Profile";
+import SignIn from "./containers/SignIn";
+import SignUp from "./containers/SignUp";
 
 // Components
-import Course from './components/Course'
-import NewCourse from './components/NewCourse'
-import ShowContent from './components/ShowContent'
-import NotFound from './components/NotFound'
+import Course from "./components/Course";
+import NewCourse from "./components/NewCourse";
+import ShowContent from "./components/ShowContent";
+import NotFound from "./components/NotFound";
 
 const routes = (
   <Router history={browserHistory}>
@@ -38,6 +38,6 @@ const routes = (
       {/*<Route path="/courses/:id/contents/new" component={NewCourse} />*/}
     </Route>
   </Router>
-)
+);
 
-export default routes
+export default routes;

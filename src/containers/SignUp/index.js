@@ -1,34 +1,34 @@
-import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
-import axios from 'axios'
-import SignUpForm from '../../components/SignUpForm'
-import { API_URL } from '../../config'
+import React, { Component } from "react";
+import { browserHistory } from "react-router";
+import axios from "axios";
+import SignUpForm from "../../components/SignUpForm";
+import { API_URL } from "../../config";
 
 class SignUp extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      error: ''
-    }
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      error: ""
+    };
   }
 
   handleChange = event => {
-    const name = event.target.name
-    const value = event.target.value
+    const name = event.target.name;
+    const value = event.target.value;
 
     this.setState({
       [name]: value
-    })
-  }
+    });
+  };
 
   handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const url = `${API_URL}/api/users`
+    const url = `${API_URL}/api/users`;
 
     const signUpData = {
       user: {
@@ -37,22 +37,22 @@ class SignUp extends Component {
         email: this.state.email,
         password: this.state.password
       }
-    }
+    };
 
     axios
       .post(url, signUpData)
       .then(response => {
         if (response.status === 201) {
-          console.log('Зарегинились!')
-          localStorage.setItem('jwt_token', response.data.jwtToken)
-          localStorage.setItem('user_id', response.data.id)
-          browserHistory.push('/courses')
+          console.log("Зарегинились!");
+          localStorage.setItem("jwt_token", response.data.jwtToken);
+          localStorage.setItem("user_id", response.data.id);
+          browserHistory.push("/courses");
         }
       })
       .catch(error => {
-        this.setState({ error: error.response.data.errors })
-      })
-  }
+        this.setState({ error: error.response.data.errors });
+      });
+  };
 
   render() {
     return (
@@ -67,8 +67,8 @@ class SignUp extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default SignUp
+export default SignUp;

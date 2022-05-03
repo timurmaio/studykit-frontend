@@ -1,32 +1,32 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
-import ReactMarkdown from 'react-markdown'
-import { API_URL, createAxios } from '../../config'
-import arrow from './arrow-back.svg'
-import lection from './lection.svg'
-import test from './test.svg'
+import React, { Component } from "react";
+import { Link } from "react-router";
+import ReactMarkdown from "react-markdown";
+import { API_URL, createAxios } from "../../config";
+import arrow from "./arrow-back.svg";
+import lection from "./lection.svg";
+import test from "./test.svg";
 
 class ShowContent extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      id: '',
-      contentId: '',
-      title: '',
+      id: "",
+      contentId: "",
+      title: "",
       content: [],
-      description: '',
-      solution: '',
-      succeed: '',
+      description: "",
+      solution: "",
+      succeed: "",
       solvedIds: [],
-      type: '',
-      checkingInformation: '',
-      error: ''
-    }
+      type: "",
+      checkingInformation: "",
+      error: ""
+    };
   }
 
   componentDidMount() {
-    const axios = createAxios()
-    const userId = localStorage.getItem('user_id')
+    const axios = createAxios();
+    const userId = localStorage.getItem("user_id");
 
     axios
       .get(
@@ -34,19 +34,19 @@ class ShowContent extends Component {
           .props.params.contentId}`
       )
       .then(response => {
-        console.log(response.data)
+        console.log(response.data);
         this.setState({
           contentId: response.data.sqlProblemId,
           title: response.data.title,
           description: response.data.body,
           type: response.data.type
-        })
-      })
+        });
+      });
 
     axios
-      .get(API_URL + '/api/courses/' + this.props.params.id)
+      .get(API_URL + "/api/courses/" + this.props.params.id)
       .then(response => {
-        console.log(response.data)
+        console.log(response.data);
         this.setState({
           id: response.data.id,
           courseTitle: response.data.title,
@@ -56,15 +56,15 @@ class ShowContent extends Component {
           owner: response.data.owner,
           solvedIds: response.data.solvedIds,
           createdAt: response.data.createdAt
-        })
-      })
+        });
+      });
 
     axios
       .get(`${API_URL}/api/courses/${this.props.params.id}/participating `)
       .then(response => {
-        this.setState({ participating: response.data.participating })
-        console.log(response.data)
-      })
+        this.setState({ participating: response.data.participating });
+        console.log(response.data);
+      });
 
     axios
       .get(
@@ -74,12 +74,12 @@ class ShowContent extends Component {
       .then(response => {
         const courseStatistics = Math.round(
           response.data.data.solved_problems / response.data.data.problems * 100
-        )
+        );
         // console.log(courseStatistics)
 
-        this.setState({ statistics: courseStatistics })
-        console.log(response.data)
-      })
+        this.setState({ statistics: courseStatistics });
+        console.log(response.data);
+      });
   }
 
   // shouldComponentUpdate(nextProps, nextState) {
@@ -92,14 +92,14 @@ class ShowContent extends Component {
   componentWillReceiveProps(nextProps) {
     // this.forceUpdate()
 
-    const axios = createAxios()
-    const userId = localStorage.getItem('user_id')
+    const axios = createAxios();
+    const userId = localStorage.getItem("user_id");
 
     this.setState({
-      solution: '',
-      checkingInformation: '',
-      alert: ''
-    })
+      solution: "",
+      checkingInformation: "",
+      alert: ""
+    });
 
     axios
       .get(
@@ -107,19 +107,19 @@ class ShowContent extends Component {
           .lectureId}/content/${nextProps.params.contentId}`
       )
       .then(response => {
-        console.log(response.data)
+        console.log(response.data);
         this.setState({
           contentId: response.data.sqlProblemId,
           title: response.data.title,
           description: response.data.body,
           type: response.data.type
-        })
-      })
+        });
+      });
 
     axios
-      .get(API_URL + '/api/courses/' + nextProps.params.id)
+      .get(API_URL + "/api/courses/" + nextProps.params.id)
       .then(response => {
-        console.log(response.data)
+        console.log(response.data);
         this.setState({
           id: response.data.id,
           courseTitle: response.data.title,
@@ -129,15 +129,15 @@ class ShowContent extends Component {
           owner: response.data.owner,
           solvedIds: response.data.solvedIds,
           createdAt: response.data.createdAt
-        })
-      })
+        });
+      });
 
     axios
       .get(`${API_URL}/api/courses/${this.props.params.id}/participating `)
       .then(response => {
-        this.setState({ participating: response.data.participating })
-        console.log(response.data)
-      })
+        this.setState({ participating: response.data.participating });
+        console.log(response.data);
+      });
 
     axios
       .get(
@@ -147,48 +147,48 @@ class ShowContent extends Component {
       .then(response => {
         const courseStatistics = Math.round(
           response.data.data.solved_problems / response.data.data.problems * 100
-        )
+        );
         // console.log(courseStatistics)
 
-        this.setState({ statistics: courseStatistics })
-        console.log(response.data)
-      })
+        this.setState({ statistics: courseStatistics });
+        console.log(response.data);
+      });
   }
 
   handleTextareaChange = event => {
-    const name = event.target.name
-    const value = event.target.value
+    const name = event.target.name;
+    const value = event.target.value;
 
     this.setState({
       [name]: value
-    })
-  }
+    });
+  };
 
   checkTheSolution = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const axios = createAxios()
+    const axios = createAxios();
 
-    this.setState({ alert: '' })
+    this.setState({ alert: "" });
 
-    const url = `${API_URL}/api/sql_solutions`
+    const url = `${API_URL}/api/sql_solutions`;
 
     let data = {
       sql_solution: {
         sql_problem_id: this.state.contentId,
         code: this.state.solution
       }
-    }
+    };
 
     axios
       .post(url, data)
       .then(response => {
         if (response.status === 201) {
-          const solutionId = response.data.id
+          const solutionId = response.data.id;
           this.setState({
-            checkingInformation: 'Идёт проверка...',
+            checkingInformation: "Идёт проверка...",
             succeed: null
-          })
+          });
 
           const waitingForSoluition = setInterval(() => {
             axios
@@ -196,59 +196,59 @@ class ShowContent extends Component {
               .then(response => {
                 if (response.data.succeed === true) {
                   this.setState({
-                    checkingInformation: 'Решение верно!',
+                    checkingInformation: "Решение верно!",
                     succeed: true
-                  })
-                  clearInterval(waitingForSoluition)
+                  });
+                  clearInterval(waitingForSoluition);
                 } else if (response.data.succeed === false) {
                   this.setState({
-                    checkingInformation: 'Решение неверно, попробуйте ещё раз!',
+                    checkingInformation: "Решение неверно, попробуйте ещё раз!",
                     succeed: false
-                  })
-                  clearInterval(waitingForSoluition)
+                  });
+                  clearInterval(waitingForSoluition);
                 }
-              })
-          }, 1000)
+              });
+          }, 1000);
         }
       })
       .catch(error => {
-        const errorText = error.response.data.errors[0]
-        this.setState({ alert: errorText })
-        console.log(errorText)
-      })
-  }
+        const errorText = error.response.data.errors[0];
+        this.setState({ alert: errorText });
+        console.log(errorText);
+      });
+  };
 
   render() {
     const alert = this.state.alert
       ? <div className="alert alert-danger">{this.state.alert}</div>
-      : null
+      : null;
 
-    let alertType
+    let alertType;
 
     switch (this.state.succeed) {
       case true:
-        alertType = 'alert-success'
-        break
+        alertType = "alert-success";
+        break;
 
       case false:
-        alertType = 'alert-danger'
-        break
+        alertType = "alert-danger";
+        break;
 
       default:
-        alertType = 'alert-info'
+        alertType = "alert-info";
     }
 
     const checkingInformation = this.state.checkingInformation
       ? <div className={`alert ${alertType}`}>
           {this.state.checkingInformation}
         </div>
-      : null
+      : null;
 
     const passStatistics = this.state.statistics
       ? this.state.participating
         ? <p>Курс пройден на {this.state.statistics}%</p>
         : null
-      : null
+      : null;
 
     return (
       <div className="container">
@@ -274,9 +274,9 @@ class ShowContent extends Component {
                       <hr className="hr my-4" />
 
                       {lecture.content.map(content => {
-                        const contentIcon = content.type === 'MarkdownContent'
+                        const contentIcon = content.type === "MarkdownContent"
                           ? lection
-                          : test
+                          : test;
                         return (
                           <Link
                             to={`/courses/${this.props.params
@@ -296,24 +296,24 @@ class ShowContent extends Component {
                                 className="mr-16"
                                 alt="Иконка контента"
                               />
-                              <div style={{ display: 'block' }}>
+                              <div style={{ display: "block" }}>
                                 {content.title}
                               </div>
                               {this.state.solvedIds.indexOf(content.id) >= 0 &&
                                 this.state.participating &&
                                 <div
                                   className="ml-16 fs-12"
-                                  style={{ fontWeight: '200', color: 'gray' }}>
+                                  style={{ fontWeight: "200", color: "gray" }}>
                                   Пройдено
                                 </div>}
                             </div>
                             <hr className="hr my-4" />
                           </Link>
-                        )
+                        );
                       })}
 
                     </div>
-                  )
+                  );
                 })}
 
               </div>
@@ -329,7 +329,7 @@ class ShowContent extends Component {
                 source={this.state.description}
               />
               <div className="form-group mx-32">
-                {this.state.type !== 'MarkdownContent' &&
+                {this.state.type !== "MarkdownContent" &&
                   <form>
                     <label htmlFor="exampleTextarea">
                       Введите сюда своё решение
@@ -354,8 +354,8 @@ class ShowContent extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default ShowContent
+export default ShowContent;

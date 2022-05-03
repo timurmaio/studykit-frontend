@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import { Link, browserHistory } from 'react-router'
-import person from './person.svg'
+import React, { Component } from "react";
+import { Link, browserHistory } from "react-router";
+import person from "./person.svg";
 
 class Header extends Component {
   handleSignOut = () => {
-    localStorage.removeItem('jwt_token')
-    localStorage.removeItem('user_id')
-    browserHistory.push('/signin')
-  }
+    localStorage.removeItem("jwt_token");
+    localStorage.removeItem("user_id");
+    browserHistory.push("/signin");
+  };
 
   handleSignIn = () => {
-    browserHistory.push('/signin')
-  }
+    browserHistory.push("/signin");
+  };
 
   render() {
-    const signed = localStorage.getItem('jwt_token')
+    const signed = localStorage.getItem("jwt_token");
 
     const signButton = signed
       ? <button type="button" onClick={this.handleSignOut} className="button">
@@ -22,7 +22,7 @@ class Header extends Component {
         </button>
       : <button type="button" onClick={this.handleSignIn} className="button">
           Войти
-        </button>
+        </button>;
 
     const linkToProfile = signed
       ? <Link
@@ -31,7 +31,7 @@ class Header extends Component {
           <img src={person} width="12px" className="mr-4" alt="" />
           <span className="mr-4">Профиль</span>
         </Link>
-      : null
+      : null;
 
     const linkToLearning = signed
       ? <Link
@@ -40,13 +40,13 @@ class Header extends Component {
           className="nav-link mr-4">
           Обучение
         </Link>
-      : null
+      : null;
 
-    const userName = localStorage.getItem('jwt_token')
-      ? <span style={{ lineHeight: '32px', marginRight: '16px' }}>
+    const userName = localStorage.getItem("jwt_token")
+      ? <span style={{ lineHeight: "32px", marginRight: "16px" }}>
           {this.props.firstName} {this.props.lastName}
         </span>
-      : null
+      : null;
 
     return (
       <header className="top-panel mb-20">
@@ -73,8 +73,8 @@ class Header extends Component {
           </div>
         </div>
       </header>
-    )
+    );
   }
 }
 
-export default Header
+export default Header;

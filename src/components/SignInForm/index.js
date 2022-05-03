@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from "react";
+import { Link } from "react-router";
 
 const SignInForm = props => {
   return (
@@ -46,7 +46,7 @@ const SignInForm = props => {
 
       <div className="alert">{props.error}</div>
     </form>
-  )
-}
+  );
+};
 
-export default SignInForm
+export default SignInForm;

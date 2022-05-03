@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import { API_URL, createAxios } from '../../config'
-import CourseCard from '../../components/CourseCard'
+import React, { Component } from "react";
+import { API_URL, createAxios } from "../../config";
+import CourseCard from "../../components/CourseCard";
 
 class Learning extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       courses: []
-    }
+    };
   }
 
   componentDidMount() {
-    const axios = createAxios()
-    const userId = localStorage.getItem('user_id')
+    const axios = createAxios();
+    const userId = localStorage.getItem("user_id");
 
     axios
       .get(`${API_URL}/api/courses?participated_by=${userId}`)
       .then(response => {
-        this.setState({ courses: response.data })
-      })
+        this.setState({ courses: response.data });
+      });
   }
 
   renderCourseCard = course => {
@@ -26,8 +26,8 @@ class Learning extends Component {
       <div className="col-3" key={course.id}>
         <CourseCard {...course} />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     return (
@@ -38,8 +38,8 @@ class Learning extends Component {
             </div>
           : <span className="text-center mt-40">У вас ещё нет курсов.</span>}
       </div>
-    )
+    );
   }
 }
 
-export default Learning
+export default Learning;
