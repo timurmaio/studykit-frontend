@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { API_URL, createAxios } from "../../config";
 import arrow from "./arrow-back.svg";

@@ -1,7 +1,6 @@
-import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-const SignInForm = (props) => {
+export default function SignInForm(props) {
   return (
     <form
       id="signin-form"
@@ -51,6 +50,4 @@ const SignInForm = (props) => {
       <div className="alert">{props.error}</div>
     </form>
   );
-};
-
-export default SignInForm;
+}
