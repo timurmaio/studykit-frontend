@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../../components/Header";
+import Header from "../../components/Header/index.tsx";
 import { API_URL, createAxios } from "../../config";
 
 class App extends Component {

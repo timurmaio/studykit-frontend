@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Link, NavLink, push, Navigate, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import person from "./person.svg";
 
 export default function Header(props) {
@@ -37,8 +36,9 @@ export default function Header(props) {
   const linkToLearning = signed ? (
     <NavLink
       to="/learning"
-      activeClassName="nav-link nav-link--active"
-      className="nav-link mr-4"
+      className={({ isActive }) =>
+        isActive ? "nav-link nav-link--active" : "nav-link mr-4"
+      }
     >
       Обучение
     </NavLink>
@@ -58,8 +58,9 @@ export default function Header(props) {
             {linkToLearning}
             <NavLink
               to="/courses"
-              activeClassName="nav-link nav-link--active"
-              className="nav-link"
+              className={({ isActive }) =>
+                isActive ? "nav-link nav-link--active" : "nav-link"
+              }
             >
               Все курсы
             </NavLink>
