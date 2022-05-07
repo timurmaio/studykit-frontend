@@ -26,6 +26,22 @@ class Course extends Component {
     const axios = createAxios();
     const userId = localStorage.getItem("user_id");
 
+    // TODO: api
+    axios
+    .get("/course_" + this.props.params.id + ".json")
+    .then((response) => {
+      this.setState({
+        id: response.data.id,
+        title: response.data.title,
+        description: response.data.description,
+        content: response.data.lectures,
+        course: response.data,
+        owner: response.data.owner,
+        solvedIds: response.data.solvedIds,
+        createdAt: response.data.createdAt,
+      });
+    });
+
     axios
       .get(API_URL + "/api/courses/" + this.props.params.id)
       .then((response) => {

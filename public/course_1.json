@@ -1,0 +1,37 @@
+{
+    "id": 2,
+    "title": "Курс",
+    "description": "Курс курс",
+    "lectures": [
+        {
+            "id": 1,
+            "title": "Введение",
+            "content": [
+                {
+                    "id": "1",
+                    "title": "Первая лекция",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Программирование",
+            "content": [
+                {
+                    "id": "1",
+                    "title": "Первая лекция",
+                    "type": "MarkdownContent"
+                }
+            ]
+        }
+
+    ],
+    "avatar": "https://www.freecodecamp.org/news/content/images/size/w2000/2019/07/react-router-4-2.png",
+    "owner": {
+        "firstName": "Иван",
+        "lastName": "Иванов"
+    },
+    "solvedIds": "5",
+    "createdAt": 1651937266662
+}

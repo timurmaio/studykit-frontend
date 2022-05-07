@@ -13,6 +13,10 @@ class Courses extends Component {
 
   componentDidMount() {
     const axios = createAxios();
+    // TODO: api
+    axios.get(`/courses.json`).then((response) => {
+      this.setState({ courses: response.data });
+    });
 
     axios.get(`${API_URL}/api/courses`).then((response) => {
       this.setState({ courses: response.data });

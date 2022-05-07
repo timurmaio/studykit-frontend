@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "avatar": "https://www.freecodecamp.org/news/content/images/size/w2000/2019/07/react-router-4-2.png",
+        "title": "Курс",
+        "description": "Курс курс",
+        "content": "Курс курс",
+        "course": "Курс",
+        "owner": "timurmaio",
+        "solvedIds": "5",
+        "createdAt": 1651937266662
+    },
+    {
+        "id": 2,
+        "avatar": "https://www.freecodecamp.org/news/content/images/size/w2000/2019/07/react-router-4-2.png",
+        "title": "Курс",
+        "description": "Курс курс",
+        "content": "Курс курс",
+        "course": "Курс",
+        "owner": "timurmaio",
+        "solvedIds": "5",
+        "createdAt": 1651937266662
+    },
+    {
+        "id": 3,
+        "avatar": "https://www.freecodecamp.org/news/content/images/size/w2000/2019/07/react-router-4-2.png",
+        "title": "Курс",
+        "description": "Курс курс",
+        "content": "Курс курс",
+        "course": "Курс",
+        "owner": "timurmaio",
+        "solvedIds": "5",
+        "createdAt": 1651937266662
+    }
+]
