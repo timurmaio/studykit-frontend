@@ -1,7 +1,15 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import person from "./person.svg";
 
-export default function Header(props) {
+interface Props {
+  user: {
+    firstName: string;
+    lastName: string;
+  };
+}
+export function Header(props: Props) {
+  const { user } = props;
+  const { firstName, lastName } = user;
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -46,7 +54,7 @@ export default function Header(props) {
 
   const userName = signed ? (
     <span style={{ lineHeight: "32px", marginRight: "16px" }}>
-      {props.firstName} {props.lastName}
+      {firstName} {lastName}
     </span>
   ) : null;
 

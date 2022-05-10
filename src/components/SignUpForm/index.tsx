@@ -1,12 +1,21 @@
-import React from "react";
+import { SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 
-const SignUpForm = (props) => {
+interface Props {
+  handleSubmit: (event: SyntheticEvent) => void;
+  handleChange: (event: SyntheticEvent) => void;
+  changeFormType: (event: SyntheticEvent) => void;
+  error: string;
+}
+
+export function SignUpForm(props: Props) {
+  const { handleSubmit, handleChange, changeFormType, error } = props;
+
   return (
     <form
       id="signup-form"
       className="auth-form shadow mt-20"
-      onSubmit={props.handleSubmit}
+      onSubmit={handleSubmit}
     >
       <header className="auth-form_head mb-24">Регистрация</header>
 
@@ -18,7 +27,7 @@ const SignUpForm = (props) => {
         name="firstName"
         className="input mb-20"
         type="text"
-        onChange={props.handleChange}
+        onChange={handleChange}
         placeholder="Иван"
         required
       />
@@ -31,7 +40,7 @@ const SignUpForm = (props) => {
         name="lastName"
         className="input mb-20"
         type="text"
-        onChange={props.handleChange}
+        onChange={handleChange}
         placeholder="Иванов"
         required
       />
@@ -44,7 +53,7 @@ const SignUpForm = (props) => {
         name="email"
         className="input mb-20"
         type="text"
-        onChange={props.handleChange}
+        onChange={handleChange}
         placeholder="example@mail.com"
         required
       />
@@ -57,7 +66,7 @@ const SignUpForm = (props) => {
         name="password"
         className="input mb-20"
         type="password"
-        onChange={props.handleChange}
+        onChange={handleChange}
         placeholder="******"
         required
       />
@@ -70,14 +79,12 @@ const SignUpForm = (props) => {
         to="/signin"
         id="signup-form-change"
         className="button button--auth-change"
-        onClick={props.changeFormType}
+        onClick={changeFormType}
       >
         Вход
       </Link>
 
-      <div className="alert">{props.error}</div>
+      <div className="alert">{error}</div>
     </form>
   );
-};
-
-export default SignUpForm;
+}

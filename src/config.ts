@@ -5,7 +5,7 @@ const API_URL = "http://46.101.216.31:8080";
 
 const createAxios = () => {
   return _axios.create({
-    headers: { Authorization: localStorage.getItem("jwt_token") },
+    headers: { Authorization: String(localStorage.getItem("jwt_token")) },
   });
 };
 

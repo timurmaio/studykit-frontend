@@ -1,33 +1,21 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import SignUpForm from "../../components/SignUpForm";
+import { SignInForm } from "../../components/SignInForm";
 import { API_URL } from "../../config";
 
-export default function SignUp() {
+export function SignIn() {
   const navigate = useNavigate();
-
   const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
     error: "",
   });
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     firstName: "",
-  //     lastName: "",
-  //     email: "",
-  //     password: "",
-  //     error: "",
-  //   };
-  // }
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+  const handleChange = (event: SyntheticEvent) => {
+    const target = event.target as HTMLInputElement;
+    const name = target.name;
+    const value = target.value;
 
     setState({
       ...state,
@@ -35,32 +23,37 @@ export default function SignUp() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    const url = `${API_URL}/api/users`;
+    const url = `${API_URL}/api/users/login`;
 
-    const signUpData = {
+    const signInData = {
       user: {
-        first_name: state.firstName,
-        last_name: state.lastName,
         email: state.email,
         password: state.password,
       },
     };
 
+    // TODO: api
+    if (state.email === "admin" && state.password === "password") {
+      localStorage.setItem("jwt_token", "jwt_token");
+      localStorage.setItem("user_id", "1");
+      return navigate("/courses");
+    }
+
     axios
-      .post(url, signUpData)
+      .post(url, signInData)
       .then((response) => {
-        if (response.status === 201) {
-          console.log("Зарегинились!");
+        if (response.status === 200) {
+          console.log("Залогинились!");
           localStorage.setItem("jwt_token", response.data.jwtToken);
           localStorage.setItem("user_id", response.data.id);
           navigate("/courses");
         }
       })
       .catch((error) => {
-        setState({ error: error.response.data.errors });
+        setState({ ...state, error: error.response.data.errors });
       });
   };
 
@@ -68,7 +61,7 @@ export default function SignUp() {
     <div className="container">
       <div className="row">
         <div className="col-4 offset-4">
-          <SignUpForm
+          <SignInForm
             error={state.error}
             handleChange={handleChange}
             handleSubmit={handleSubmit}

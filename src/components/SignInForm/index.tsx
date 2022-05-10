@@ -1,11 +1,19 @@
+import { SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 
-export default function SignInForm(props) {
+interface Props {
+  handleSubmit: (event: SyntheticEvent) => void;
+  handleChange: (event: SyntheticEvent) => void;
+  error: string;
+}
+
+export function SignInForm(props: Props) {
+  const { handleSubmit, handleChange, error } = props;
   return (
     <form
       id="signin-form"
       className="auth-form shadow mt-40"
-      onSubmit={props.handleSubmit}
+      onSubmit={handleSubmit}
     >
       <header className="auth-form_head mb-24">Вход в систему</header>
 
@@ -17,7 +25,7 @@ export default function SignInForm(props) {
         name="email"
         className="input mb-20"
         type="text"
-        onChange={props.handleChange}
+        onChange={handleChange}
         placeholder="example@mail.com"
         required
       />
@@ -30,7 +38,7 @@ export default function SignInForm(props) {
         name="password"
         className="input mb-20"
         type="password"
-        onChange={props.handleChange}
+        onChange={handleChange}
         placeholder="******"
         required
       />
@@ -47,7 +55,7 @@ export default function SignInForm(props) {
         Регистрация
       </Link>
 
-      <div className="alert">{props.error}</div>
+      <div className="alert">{error}</div>
     </form>
   );
 }

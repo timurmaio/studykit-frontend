@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function Profile(props) {
+export function Profile() {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -16,7 +16,7 @@ function Profile(props) {
           <div className="panel h-600">
             <img src="" alt="" />
             <button>Изменить фото</button>
-            <button onClick={this.handleSignOut}>Выйти</button>
+            <button onClick={handleSignOut}>Выйти</button>
           </div>
         </div>
         <div className="col-9">
@@ -29,5 +29,3 @@ function Profile(props) {
     </div>
   );
 }
-
-export default Profile;

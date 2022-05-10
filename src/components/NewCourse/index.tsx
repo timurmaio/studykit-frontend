@@ -1,20 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { SyntheticEvent, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { API_URL, createAxios } from "../../config";
 
-function NewCourse(props) {
+function NewCourse() {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     type: "MarkdownContent",
     serial: "",
     title: "",
     body: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
 
     const axios = createAxios();
-    const courseId = props.params.id;
+    const courseId = id;
 
     const url = API_URL + "/api/courses/" + courseId + "/content";
 
@@ -35,8 +37,8 @@ function NewCourse(props) {
     });
   };
 
-  handleInputChange = (event) => {
-    const target = event.target;
+  const handleInputChange = (event: SyntheticEvent) => {
+    const target = event.target as HTMLInputElement;
     const name = target.name;
     const value = target.value;
     setState({ ...state, [name]: value });
@@ -82,7 +84,7 @@ function NewCourse(props) {
           className="form-control"
           name="body"
           id="exampleTextarea"
-          rows="3"
+          rows={3}
           onChange={handleInputChange}
         />
       </div>
